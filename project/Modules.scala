@@ -17,7 +17,6 @@ case class Module(
       .settings(
         version := jsVersion, // TODO: should the facade version reflect the js version?
 
-        // TODO: should each facade depend on its js dependency?
         jsDependencies += "org.webjars.npm" % s"d3-$name" % jsVersion
           / s"d3-$name.js" minified s"d3-$name.min.js"
           dependsOn (dependencies.map(m => s"d3-$m.js"): _*),
@@ -50,8 +49,8 @@ object ModuleProjectsPlugin extends AutoPlugin {
     Module("dispatch", "1.0.2") ::
     Module("drag", "1.0.2") ::
     Module("dsv", "1.0.3") ::
-    Module("ease", "1.0.2" /*, dependencies = List("ease")*/ ) ::
-    Module("force", "1.0.4" /*, dependencies = List("selection")*/ ) ::
+    Module("ease", "1.0.2") ::
+    Module("force", "1.0.4", dependencies = List("selection")) ::
     Module("format", "1.0.2") ::
     Module("geo", "1.4.0") ::
     // TODO: Module("geo-projection", "0.2.16") :: // strange webjar dependencies: esutils, estraverse, esprima
@@ -83,6 +82,10 @@ object ModuleProjectsPlugin extends AutoPlugin {
 
   val findModule: Map[String, Module] = modules.map(m => m.name -> m)(breakOut)
 
-  override def extraProjects = base :: (modules map (m => m.project))
-  // override def extraProjects = base :: (modules map (m => m.project.dependsOn(m.dependencies.map(d => new ClasspathDependency(findModule(d).projectRef, None)): _*))) // This seems wrong...
+  val moduleProjectsWithDeps: List[Project] = modules.map { module =>
+    val dependencies = module.dependencies.map(d => findModule(d).projectRef)
+    dependencies.foldLeft(module.project)((project, dep) => project.dependsOn(dep))
+  }
+
+  override def extraProjects = base :: moduleProjectsWithDeps
 }
