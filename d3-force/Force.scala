@@ -1,7 +1,7 @@
 package org.scalajs.d3v4
 
 import scalajs.js
-import scalajs.js.{native, Object, undefined}
+import scalajs.js.{native, Object, undefined, `|`}
 import scala.scalajs.js.annotation._
 
 // https://github.com/d3/d3-force
@@ -69,6 +69,8 @@ package object force {
   @native
   trait Link[L] extends Object with Force {
     def distance(distance: Double): this.type = native
+    def distance(distance: js.Function1[L, Double]): this.type = native
+    def strength(strength: Double): this.type = native
     def strength(strength: js.Function1[L, Double]): this.type = native
     def links(links: js.Array[L]): this.type = native
   }
@@ -91,12 +93,30 @@ package object force {
     def fy_=(newFX: js.UndefOr[Double])
   }
 
+  trait SimulationNodeImpl extends SimulationNode {
+    var index: js.UndefOr[Int] = js.undefined
+
+    var x: js.UndefOr[Double] = js.undefined
+    var y: js.UndefOr[Double] = js.undefined
+    var vx: js.UndefOr[Double] = js.undefined
+    var vy: js.UndefOr[Double] = js.undefined
+    var fx: js.UndefOr[Double] = js.undefined
+    var fy: js.UndefOr[Double] = js.undefined
+  }
+
   @JSExportAll
   trait SimulationLink[S <: SimulationNode, T <: SimulationNode] {
     def index: js.UndefOr[Int]
     def index_=(newIndex: js.UndefOr[Int])
 
-    var source: S = _
-    var target: T = _
+    def source: S
+    def target: T
+  }
+
+  trait SimulationLinkImpl[S <: SimulationNode, T <: SimulationNode] extends SimulationLink[S, T] {
+    var index: js.UndefOr[Int] = js.undefined
+
+    //     var source: S = _
+    //     var target: T = _
   }
 }
