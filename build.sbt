@@ -12,3 +12,5 @@ lazy val root = project.in(file(".")).
   )
 
 organization in Global := "com.github.fdietze"
+
+//TODO: which licence for scala-js-facades?

@@ -4,6 +4,7 @@ import scalajs.js
 import scalajs.js.{native, Object, undefined}
 import scala.scalajs.js.annotation._
 
+// https://github.com/d3/d3-selection
 package object selection {
   implicit def d3Selection(jq: d3): D3Selection = jq.asInstanceOf[D3Selection]
 

@@ -4,6 +4,7 @@ import scalajs.js
 import scalajs.js.{native, Object, undefined}
 import scala.scalajs.js.annotation._
 
+// https://github.com/d3/d3-zoom
 package object zoom {
   implicit def d3Zoom(jq: d3): D3Zoom = jq.asInstanceOf[D3Zoom]
 

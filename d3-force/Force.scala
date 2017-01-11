@@ -4,6 +4,7 @@ import scalajs.js
 import scalajs.js.{native, Object, undefined}
 import scala.scalajs.js.annotation._
 
+// https://github.com/d3/d3-force
 package object force {
   implicit def d3Force(jq: d3): D3Force = jq.asInstanceOf[D3Force]
 

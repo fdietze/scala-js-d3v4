@@ -3,24 +3,44 @@ import Keys._
 import org.scalajs.sbtplugin.ScalaJSPlugin
 import org.scalajs.sbtplugin.ScalaJSPlugin.autoImport._
 
+import collection.breakOut
+
 case class Module(
   name: String,
-  version: String,
+  jsVersion: String,
   dependencies: Seq[String] = Nil
 ) {
-  def subProject = {
+  lazy val project = {
     Project(s"scala-js-d3v4-$name", file(s"d3-$name"))
       .enablePlugins(ScalaJSPlugin)
+      .dependsOn(ModuleProjectsPlugin.base)
       .settings(
-        jsDependencies += "org.webjars.npm" % "d3-selection" % version
+        version := jsVersion, // TODO: should the facade version reflect the js version?
+
+        // TODO: should each facade depend on its js dependency?
+        jsDependencies += "org.webjars.npm" % s"d3-$name" % jsVersion
           / s"d3-$name.js" minified s"d3-$name.min.js"
-          dependsOn (dependencies.map(m => s"d3-$m.js"): _*)
+          dependsOn (dependencies.map(m => s"d3-$m.js"): _*),
+
+        scalacOptions ++= (
+          "-unchecked" ::
+          "-deprecation" ::
+          "-feature" ::
+          "-language:implicitConversions" ::
+          Nil
+        )
       )
   }
+  lazy val projectRef = Project.projectToRef(project)
 }
 
 object ModuleProjectsPlugin extends AutoPlugin {
+  //TODO: how to declare dependencies?
+  // - project.dependsOn ?
+  // - jsDependencies( dependsOn ) ?
   val modules = (
+    // https://github.com/d3/d3/blob/master/API.md
+    // http://www.webjars.org/npm
     Module("array", "1.0.2") ::
     Module("axis", "1.0.4") ::
     Module("brush", "1.0.3") ::
@@ -30,16 +50,16 @@ object ModuleProjectsPlugin extends AutoPlugin {
     Module("dispatch", "1.0.2") ::
     Module("drag", "1.0.2") ::
     Module("dsv", "1.0.3") ::
-    Module("ease", "1.0.2", dependencies = List("ease")) ::
-    Module("force", "1.0.4", dependencies = List("selection")) ::
+    Module("ease", "1.0.2" /*, dependencies = List("ease")*/ ) ::
+    Module("force", "1.0.4" /*, dependencies = List("selection")*/ ) ::
     Module("format", "1.0.2") ::
     Module("geo", "1.4.0") ::
-    Module("geo-projection", "0.2.16") ::
+    // TODO: Module("geo-projection", "0.2.16") :: // strange webjar dependencies: esutils, estraverse, esprima
     Module("hierarchy", "1.0.3") ::
     Module("interpolate", "1.1.2") ::
-    Module("layout-timeline", "1.0.2") ::
+    //TODO: Module("layout-timeline", "1.0.2") :: // different js file names: d3.layout.timeline.js, no minified
     Module("path", "1.0.3") ::
-    Module("plugins-dist", "3.2.0") ::
+    // TODO: Module("plugins-dist", "3.2.0") ::
     Module("polygon", "1.0.2") ::
     Module("quadtree", "1.0.2") ::
     Module("queue", "3.0.3") ::
@@ -56,7 +76,13 @@ object ModuleProjectsPlugin extends AutoPlugin {
     Module("zoom", "1.1.1") ::
     Nil
   )
-  val base = Project(s"scala-js-d3v4", file(s"scala-js-d3v4"))
+
+  // The base project contains only the native d3 object and trait, which other modules extend via implicits
+  val base = Project(s"scala-js-d3v4", file(s"d3"))
     .enablePlugins(ScalaJSPlugin)
-  override def extraProjects = base :: (modules map (_.subProject))
+
+  val findModule: Map[String, Module] = modules.map(m => m.name -> m)(breakOut)
+
+  override def extraProjects = base :: (modules map (m => m.project))
+  // override def extraProjects = base :: (modules map (m => m.project.dependsOn(m.dependencies.map(d => new ClasspathDependency(findModule(d).projectRef, None)): _*))) // This seems wrong...
 }
