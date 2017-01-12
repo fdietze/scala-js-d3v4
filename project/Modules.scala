@@ -79,6 +79,9 @@ object ModuleProjectsPlugin extends AutoPlugin {
   // The base project contains only the native d3 object and trait, which other modules extend via implicits
   val base = Project(s"scala-js-d3v4", file(s"d3"))
     .enablePlugins(ScalaJSPlugin)
+    .settings(
+      version := "0.1.0"
+    )
 
   val findModule: Map[String, Module] = modules.map(m => m.name -> m)(breakOut)
 
