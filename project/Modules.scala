@@ -15,7 +15,9 @@ case class Module(
       .enablePlugins(ScalaJSPlugin)
       .dependsOn(ModuleProjectsPlugin.base)
       .settings(
-        version := jsVersion, // TODO: should the facade version reflect the js version?
+        version := "0.1.0-SNAPSHOT",
+
+        libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1",
 
         jsDependencies += "org.webjars.npm" % s"d3-$name" % jsVersion
           / s"d3-$name.js" minified s"d3-$name.min.js"
@@ -34,6 +36,12 @@ case class Module(
 }
 
 object ModuleProjectsPlugin extends AutoPlugin {
+  // The base project contains only the native d3 object and trait, which other modules extend via implicits
+  val base = Project(s"scala-js-d3v4", file(s"d3"))
+    .enablePlugins(ScalaJSPlugin)
+    .settings(
+      version := "0.1.0-SNAPSHOT"
+    )
   //TODO: how to declare dependencies?
   // - project.dependsOn ?
   // - jsDependencies( dependsOn ) ?
@@ -75,13 +83,6 @@ object ModuleProjectsPlugin extends AutoPlugin {
     Module("zoom", "1.1.1") ::
     Nil
   )
-
-  // The base project contains only the native d3 object and trait, which other modules extend via implicits
-  val base = Project(s"scala-js-d3v4", file(s"d3"))
-    .enablePlugins(ScalaJSPlugin)
-    .settings(
-      version := "0.1.0"
-    )
 
   val findModule: Map[String, Module] = modules.map(m => m.name -> m)(breakOut)
 
