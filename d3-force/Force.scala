@@ -28,8 +28,11 @@ package object force {
     def on(typenames: String): this.type = native
     def find(x: Double, y: Double, radius: Double = Double.PositiveInfinity): js.UndefOr[N] = native
     def alpha(alpha: Double): this.type = native
+    def alpha(): Double = native
     def alphaTarget(target: Double): this.type = native
     def alphaTarget(): Double = native
+    def alphaMin(min: Double): this.type = native
+    def alphaMin(): Double = native
     def restart(): this.type = native
   }
 
