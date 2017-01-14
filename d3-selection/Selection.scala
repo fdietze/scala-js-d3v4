@@ -11,7 +11,8 @@ package object selection {
 
   @js.native
   trait D3Selection extends d3 {
-    def event[E <: dom.Event]: E = native
+    var event: dom.Event | BaseEvent = native
     def mouse(container: dom.raw.HTMLElement | dom.raw.SVGElement): js.Array[Double]
   }
+
 }

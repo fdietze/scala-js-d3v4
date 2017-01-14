@@ -40,7 +40,8 @@ object ModuleProjectsPlugin extends AutoPlugin {
   val base = Project(s"scala-js-d3v4", file(s"d3"))
     .enablePlugins(ScalaJSPlugin)
     .settings(
-      version := "0.1.0-SNAPSHOT"
+      version := "0.1.0-SNAPSHOT",
+      libraryDependencies += "org.scala-js" %%% "scalajs-dom" % "0.9.1"
     )
   //TODO: how to declare dependencies?
   // - project.dependsOn ?

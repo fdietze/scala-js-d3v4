@@ -14,11 +14,6 @@ package object zoom {
     def zoomIdentity: Transform = native
   }
 
-  @js.native
-  trait ZoomEvent extends dom.Event {
-    def transform: Transform = native
-  }
-
   @native
   trait Transform extends Object {
     override def toString: String = native
@@ -33,5 +28,10 @@ package object zoom {
     def k: Double = native
     def translate(x: Double | js.UndefOr[Double], y: Double | js.UndefOr[Double]): Transform
     def scale(k: Double | js.UndefOr[Double]): Transform
+  }
+
+  @js.native
+  trait ZoomEvent extends BaseEvent {
+    def transform: Transform = native
   }
 }
