@@ -35,6 +35,8 @@ package object force {
     def alphaMin(min: Double): this.type = native
     def alphaMin(): Double = native
     def restart(): this.type = native
+    def stop(): this.type = native
+    def tick(): this.type = native
   }
 
   @native
