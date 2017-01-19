@@ -1,7 +1,7 @@
 package org.scalajs.d3v4
 
 import scalajs.js
-import scalajs.js.{native, Object, undefined, `|`}
+import scalajs.js.{native, undefined, `|`}
 import scala.scalajs.js.annotation._
 
 // https://github.com/d3/d3-force
@@ -20,7 +20,7 @@ package object force {
   }
 
   @native
-  trait Simulation[N <: SimulationNode] extends Object {
+  trait Simulation[N <: SimulationNode] extends js.Object {
     def force(name: String, force: Force[N]): this.type = native
     def force[F <: Force[N]](name: String): F = native
     def nodes(nodes: js.Array[N]): this.type = native
@@ -40,12 +40,12 @@ package object force {
   }
 
   @native
-  trait Force[N <: SimulationNode] extends Object {
+  trait Force[N <: SimulationNode] extends js.Object {
     def initialize(nodes: js.Array[N]): Unit = native
   }
 
   @native
-  trait Centering[N <: SimulationNode] extends Object with Force[N] {
+  trait Centering[N <: SimulationNode] extends js.Object with Force[N] {
     def x(x: Double): this.type = native
     def y(y: Double): this.type = native
     def x(): Double = native
@@ -53,29 +53,29 @@ package object force {
   }
 
   @native
-  trait PositioningX[N <: SimulationNode] extends Object with Force[N] {
+  trait PositioningX[N <: SimulationNode] extends js.Object with Force[N] {
     def x(x: Double): this.type = native
     def strength(strength: Double): this.type = native
   }
 
   @native
-  trait PositioningY[N <: SimulationNode] extends Object with Force[N] {
+  trait PositioningY[N <: SimulationNode] extends js.Object with Force[N] {
     def y(y: Double): this.type = native
     def strength(strength: Double): this.type = native
   }
 
   @native
-  trait ManyBody[N <: SimulationNode] extends Object with Force[N] {
+  trait ManyBody[N <: SimulationNode] extends js.Object with Force[N] {
     def strength(strength: Double): this.type = native
   }
 
   @native
-  trait Collision[N <: SimulationNode] extends Object with Force[N] {
+  trait Collision[N <: SimulationNode] extends js.Object with Force[N] {
     def radius(radius: js.Function1[N, Double]): this.type = native
   }
 
   @native
-  trait Link[N <: SimulationNode, L <: SimulationLink[_ <: N, _ <: N]] extends Object with Force[N] {
+  trait Link[N <: SimulationNode, L <: SimulationLink[_ <: N, _ <: N]] extends js.Object with Force[N] {
     def distance(distance: Double): this.type = native
     def distance(distance: js.Function1[L, Double]): this.type = native
     def strength(strength: Double): this.type = native
@@ -84,7 +84,7 @@ package object force {
   }
 
   @ScalaJSDefined
-  trait SimulationNode extends Object {
+  trait SimulationNode extends js.Object {
     def index: js.UndefOr[Int]
     def index_=(newIndex: js.UndefOr[Int])
     def x: js.UndefOr[Double]
@@ -113,7 +113,7 @@ package object force {
   }
 
   @ScalaJSDefined
-  trait SimulationLink[S <: SimulationNode, T <: SimulationNode] extends Object {
+  trait SimulationLink[S <: SimulationNode, T <: SimulationNode] extends js.Object {
     def index: js.UndefOr[Int]
     def index_=(newIndex: js.UndefOr[Int])
 
