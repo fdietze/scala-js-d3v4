@@ -83,8 +83,8 @@ package object force {
     def links(links: js.Array[L]): this.type = native
   }
 
-  @JSExportAll
-  trait SimulationNode {
+  @ScalaJSDefined
+  trait SimulationNode extends Object {
     def index: js.UndefOr[Int]
     def index_=(newIndex: js.UndefOr[Int])
     def x: js.UndefOr[Double]
@@ -112,8 +112,8 @@ package object force {
     var fy: js.UndefOr[Double] = js.undefined
   }
 
-  @JSExportAll
-  trait SimulationLink[S <: SimulationNode, T <: SimulationNode] {
+  @ScalaJSDefined
+  trait SimulationLink[S <: SimulationNode, T <: SimulationNode] extends Object {
     def index: js.UndefOr[Int]
     def index_=(newIndex: js.UndefOr[Int])
 
