@@ -59,7 +59,7 @@ object ModuleProjectsPlugin extends AutoPlugin {
     Module("drag", "1.0.2") ::
     Module("dsv", "1.0.3") ::
     Module("ease", "1.0.2") ::
-    Module("force", "1.0.4", dependencies = List("selection")) ::
+    Module("force", "1.0.4", dependencies = List("selection", "quadtree")) ::
     Module("format", "1.0.2") ::
     Module("geo", "1.4.0") ::
     // TODO: Module("geo-projection", "0.2.16") :: // strange webjar dependencies: esutils, estraverse, esprima
@@ -75,7 +75,7 @@ object ModuleProjectsPlugin extends AutoPlugin {
     Module("request", "1.0.3") ::
     Module("scale", "1.0.4") ::
     Module("selection", "1.0.3") ::
-    Module("shape", "1.0.4") ::
+    Module("shape", "1.0.4", dependencies = List("path")) ::
     Module("time", "1.0.4") ::
     Module("time-format", "2.0.3") ::
     Module("timer", "1.0.3") ::
