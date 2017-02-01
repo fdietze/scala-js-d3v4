@@ -21,10 +21,11 @@ object d3force extends js.Object {
 @js.native
 trait Simulation[N <: SimulationNode] extends js.Object {
   def force(name: String, force: Force[N]): this.type = js.native
-  def force[F <: Force[N]](name: String): F = js.native
+  def force(name: String): Force[N] = js.native
   def nodes(nodes: js.Array[N]): this.type = js.native
   def nodes(): js.Array[N] = js.native
-  def on(typenames: String, listener: js.Function0[Unit]): this.type = js.native
+  def on(typenames: String, listener: js.ThisFunction0[Simulation[N],Any]): this.type = js.native
+  def on(typenames: String, listener: ListenerFunction0): this.type = js.native
   def on(typenames: String): this.type = js.native
   def find(x: Double, y: Double, radius: Double = Double.PositiveInfinity): js.UndefOr[N] = js.native
   def alpha(alpha: Double): this.type = js.native

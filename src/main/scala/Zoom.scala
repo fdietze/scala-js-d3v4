@@ -10,7 +10,7 @@ import org.scalajs.dom
 @js.native
 object d3zoom extends js.Object {
   def zoomIdentity: Transform = js.native
-  def zoom[Datum](): Zoom[Datum] = js.native
+  def zoom[Datum](): ZoomBehavior[Datum] = js.native
 }
 
 @js.native
@@ -35,6 +35,6 @@ trait ZoomEvent extends BaseEvent {
 }
 
 @js.native
-trait Zoom[Datum] extends js.Function1[Selection[Datum], Unit] {
-  def on(typenames: String, listener: js.Function0[Any]): Zoom[Datum] = js.native
+trait ZoomBehavior[Datum] extends js.Function1[Selection[Datum], Unit] {
+  def on(typenames: String, listener: ListenerFunction0): ZoomBehavior[Datum] = js.native
 }

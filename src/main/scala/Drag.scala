@@ -9,6 +9,7 @@ import org.scalajs.dom
 @JSImport("d3-drag", JSImport.Namespace)
 @js.native
 object d3drag extends js.Object {
+  def drag[Datum](): DragBehavior[Datum] = js.native
 }
 
 @js.native
@@ -17,4 +18,10 @@ trait DragEvent extends BaseEvent {
   var y: Double = js.native
   var dx: Double = js.native
   var dy: Double = js.native
+}
+
+@js.native
+trait DragBehavior[Datum] extends js.Function1[Selection[Datum], Unit] {
+  def on(typenames: String, listener: ListenerFunction0): DragBehavior[Datum] = js.native
+  def on(typenames: String, listener: ListenerFunction1[Datum]): DragBehavior[Datum] = js.native
 }
