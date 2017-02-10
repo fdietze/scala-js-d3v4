@@ -24,7 +24,7 @@ trait Simulation[N <: SimulationNode] extends js.Object {
   def force(name: String): Force[N] = js.native
   def nodes(nodes: js.Array[N]): this.type = js.native
   def nodes(): js.Array[N] = js.native
-  def on(typenames: String, listener: js.ThisFunction0[Simulation[N],Any]): this.type = js.native
+  def on(typenames: String, listener: js.ThisFunction0[Simulation[N], Any]): this.type = js.native
   def on(typenames: String, listener: ListenerFunction0): this.type = js.native
   def on(typenames: String): this.type = js.native
   def find(x: Double, y: Double, radius: Double = Double.PositiveInfinity): js.UndefOr[N] = js.native
@@ -39,13 +39,20 @@ trait Simulation[N <: SimulationNode] extends js.Object {
   def tick(): this.type = js.native
 }
 
-@js.native
+@ScalaJSDefined
 trait Force[N <: SimulationNode] extends js.Object {
+  def force(alpha: Double)
+  def initialize(nodes: js.Array[N])
+}
+
+@js.native
+trait ForceImpl[N <: SimulationNode] extends Force[N] {
+  def force(alpha: Double): Unit = js.native
   def initialize(nodes: js.Array[N]): Unit = js.native
 }
 
 @js.native
-trait Centering[N <: SimulationNode] extends js.Object with Force[N] {
+trait Centering[N <: SimulationNode] extends ForceImpl[N] {
   def x(x: Double): this.type = js.native
   def y(y: Double): this.type = js.native
   def x(): Double = js.native
@@ -53,29 +60,29 @@ trait Centering[N <: SimulationNode] extends js.Object with Force[N] {
 }
 
 @js.native
-trait PositioningX[N <: SimulationNode] extends js.Object with Force[N] {
+trait PositioningX[N <: SimulationNode] extends ForceImpl[N] {
   def x(x: Double): this.type = js.native
   def strength(strength: Double): this.type = js.native
 }
 
 @js.native
-trait PositioningY[N <: SimulationNode] extends js.Object with Force[N] {
+trait PositioningY[N <: SimulationNode] extends ForceImpl[N] {
   def y(y: Double): this.type = js.native
   def strength(strength: Double): this.type = js.native
 }
 
 @js.native
-trait ManyBody[N <: SimulationNode] extends js.Object with Force[N] {
+trait ManyBody[N <: SimulationNode] extends ForceImpl[N] {
   def strength(strength: Double): this.type = js.native
 }
 
 @js.native
-trait Collision[N <: SimulationNode] extends js.Object with Force[N] {
+trait Collision[N <: SimulationNode] extends ForceImpl[N] {
   def radius(radius: js.Function1[N, Double]): this.type = js.native
 }
 
 @js.native
-trait Link[N <: SimulationNode, L <: SimulationLink[_ <: N, _ <: N]] extends js.Object with Force[N] {
+trait Link[N <: SimulationNode, L <: SimulationLink[_ <: N, _ <: N]] extends ForceImpl[N] {
   def distance(distance: Double): this.type = js.native
   def distance(distance: js.Function1[L, Double]): this.type = js.native
   def strength(strength: Double): this.type = js.native

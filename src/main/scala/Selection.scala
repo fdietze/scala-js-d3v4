@@ -9,8 +9,8 @@ import org.scalajs.dom
 @JSImport("d3-selection", JSImport.Namespace)
 @js.native
 object d3selection extends js.Object {
-  def select(selector: String): Selection[dom.EventTarget] = js.native
-  def select(node: dom.EventTarget): Selection[dom.EventTarget] = js.native
+  def select(selector: String): Selection[dom.EventTarget] = js.native // TODO: Return type correct?
+  def select(node: dom.EventTarget): Selection[dom.EventTarget] = js.native // TODO: Return type correct?
   var event: dom.Event | BaseEvent = js.native
   def mouse(container: dom.raw.HTMLElement | dom.raw.SVGElement): js.Array[Double] = js.native
 }
