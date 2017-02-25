@@ -1,7 +1,7 @@
 name := "scala-js-d3v4"
 version := "0.1.0-SNAPSHOT"
 
-scalaVersion := "2.12.1"
+scalaVersion := "2.11.8"
 crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
@@ -22,8 +22,8 @@ scalacOptions ++=
   "-explaintypes" ::
   "-feature" ::
   "-language:_" ::
-  "-Xlint:_" ::
-  "-Ywarn-unused" ::
+  // "-Xlint:_" ::
+  // "-Ywarn-unused" ::
   Nil
 
 organization in Global := "com.github.fdietze"
