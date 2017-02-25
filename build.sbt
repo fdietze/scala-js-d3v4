@@ -11,39 +11,7 @@ libraryDependencies ++= (
   Nil
 )
 npmDependencies in Compile ++= (
-  "d3-array" -> "1.0.2" ::
-  "d3-axis" -> "1.0.4" ::
-  "d3-brush" -> "1.0.3" ::
-  "d3-chord" -> "1.0.3" ::
-  "d3-collection" -> "1.0.2" ::
-  "d3-color" -> "1.0.2" ::
-  "d3-dispatch" -> "1.0.2" ::
-  "d3-drag" -> "1.0.2" ::
-  "d3-dsv" -> "1.0.3" ::
-  "d3-ease" -> "1.0.2" ::
-  "d3-force" -> "1.0.4" ::
-  "d3-format" -> "1.0.2" ::
-  "d3-geo" -> "1.4.0" ::
-  "d3-geo-projection" -> "0.2.16" ::
-  "d3-hierarchy" -> "1.0.3" ::
-  "d3-interpolate" -> "1.1.2" ::
-  "d3-layout-timeline" -> "1.0.2" ::
-  "d3-path" -> "1.0.3" ::
-  "d3-plugins-dist" -> "3.2.0" ::
-  "d3-polygon" -> "1.0.2" ::
-  "d3-quadtree" -> "1.0.2" ::
-  "d3-queue" -> "3.0.3" ::
-  "d3-random" -> "1.0.2" ::
-  "d3-request" -> "1.0.3" ::
-  "d3-scale" -> "1.0.4" ::
-  "d3-selection" -> "1.0.3" ::
-  "d3-shape" -> "1.0.4" ::
-  "d3-time" -> "1.0.4" ::
-  "d3-time-format" -> "2.0.3" ::
-  "d3-timer" -> "1.0.3" ::
-  "d3-transition" -> "1.0.3" ::
-  "d3-voronoi" -> "1.1.0" ::
-  "d3-zoom" -> "1.1.1" ::
+  "d3" -> "4.6.0" ::
   Nil
 )
 
