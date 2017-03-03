@@ -12,21 +12,23 @@ object d3selection extends js.Object {
   def select(selector: String): Selection[dom.EventTarget] = js.native // TODO: Return type correct?
   def select(node: dom.EventTarget): Selection[dom.EventTarget] = js.native // TODO: Return type correct?
   var event: dom.Event | BaseEvent = js.native
-  def mouse(container: dom.raw.HTMLElement | dom.raw.SVGElement): js.Array[Double] = js.native
+  def mouse(container: dom.EventTarget): js.Array[Double] = js.native
 }
 
 @js.native
 trait BaseSelection[Datum, T <: BaseSelection[Datum, T]] extends BaseDom[Datum, T] {
-  def append(name: String): T = js.native
+  def append(`type`: String): T = js.native
+  def append(`type`: js.Function0[dom.EventTarget]): T = js.native
+  def append(`type`: js.Function1[Datum, dom.EventTarget]): T = js.native
 
   def on(typenames: String, listener: ListenerFunction0): T = js.native
   def on(typenames: String, listener: ListenerFunction1): T = js.native
 
   def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction1[R]): Update[NewDatum] = js.native
   def data[NewDatum <: Datum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
-  def data():js.Array[Datum] = js.native
+  def data(): js.Array[Datum] = js.native
 
-  def each[C <: CurrentDom](function:ListenerThisFunction1[C]):Unit = js.native
+  def each[C <: CurrentDom](function: ListenerThisFunction1[C]): Unit = js.native
 }
 
 @js.native
@@ -46,7 +48,7 @@ trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
   type ValueThisFunction1[C <: CurrentDom, Return] = js.ThisFunction1[C, Datum, Return]
   type ValueThisFunction0[C <: CurrentDom, Return] = js.ThisFunction0[C, Return]
 
-  type ListenerThisFunction3[C <: CurrentDom]  = ValueThisFunction3[C, Any]
+  type ListenerThisFunction3[C <: CurrentDom] = ValueThisFunction3[C, Any]
   type ListenerThisFunction2[C <: CurrentDom] = ValueThisFunction2[C, Any]
   type ListenerThisFunction1[C <: CurrentDom] = ValueThisFunction1[C, Any]
   type ListenerThisFunction0[C <: CurrentDom] = ValueThisFunction0[C, Any]
@@ -83,6 +85,8 @@ trait Update[Datum] extends BaseSelection[Datum, Update[Datum]] {
 @js.native
 trait Enter[Datum] extends js.Object {
   def append(name: String): Selection[Datum] = js.native
+  def append(`type`: js.Function0[dom.EventTarget]): Selection[Datum] = js.native
+  def append(`type`: js.Function1[Datum, dom.EventTarget]): Selection[Datum] = js.native
 
   def append(name: js.Function3[Datum, Double, Double, dom.EventTarget]): Selection[Datum] = js.native
 }
