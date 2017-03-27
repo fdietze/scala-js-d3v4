@@ -26,30 +26,32 @@ package object d3v4 {
   type Index = Int
   type Group = js.UndefOr[Int]
 
-  type ValueFunction3[Datum,Return] = js.Function3[Datum, Index, Group, Return]
-  type ValueFunction2[Datum,Return] = js.Function2[Datum, Index, Return]
-  type ValueFunction1[Datum,Return] = js.Function1[Datum, Return]
+  type ValueFunction3[Datum, Return] = js.Function3[Datum, Index, Group, Return]
+  type ValueFunction2[Datum, Return] = js.Function2[Datum, Index, Return]
+  type ValueFunction1[Datum, Return] = js.Function1[Datum, Return]
   type ValueFunction0[Return] = js.Function0[Return]
 
-  type ListenerFunction3[Datum] = ValueFunction3[Datum,Any]
-  type ListenerFunction2[Datum] = ValueFunction2[Datum,Any]
-  type ListenerFunction1[Datum] = ValueFunction1[Datum,Any]
+  type ListenerFunction3[Datum] = ValueFunction3[Datum, Any]
+  type ListenerFunction2[Datum] = ValueFunction2[Datum, Any]
+  type ListenerFunction1[Datum] = ValueFunction1[Datum, Any]
   type ListenerFunction0 = ValueFunction0[Any]
 
-
-  implicit def d3toD3Force(d3t: d3.type): d3force.type = d3force
-  implicit def d3toD3Zoom(d3t: d3.type): d3zoom.type = d3zoom
-  implicit def d3toD3Drag(d3t: d3.type): d3drag.type = d3drag
-  implicit def d3toD3Polygon(d3t: d3.type): d3polygon.type = d3polygon
-  implicit def d3toD3Selection(d3t: d3.type): d3selection.type = d3selection
+  implicit def d3toD3Axis(d3t: d3.type): d3axis.type = d3axis
   implicit def d3toD3Color(d3t: d3.type): d3color.type = d3color
+  implicit def d3toD3Drag(d3t: d3.type): d3drag.type = d3drag
+  implicit def d3toD3Force(d3t: d3.type): d3force.type = d3force
+  implicit def d3toD3Polygon(d3t: d3.type): d3polygon.type = d3polygon
+  implicit def d3toD3Scale(d3t: d3.type): d3scale.type = d3scale
+  implicit def d3toD3Selection(d3t: d3.type): d3selection.type = d3selection
   implicit def d3toD3Shape(d3t: d3.type): d3shape.type = d3shape
+  implicit def d3toD3Time(d3t: d3.type): d3time.type = d3time
+  implicit def d3toD3Zoom(d3t: d3.type): d3zoom.type = d3zoom
 
   implicit class SelectionExtensions[Datum](s: Selection[Datum]) {
     def nodeAs[T <: dom.EventTarget] = s.node().asInstanceOf[T]
   }
 
   implicit class SimulationExtensions[N <: SimulationNode](s: Simulation[N]) {
-    def forceAs[F <: Force[N]](name:String) = s.force(name).asInstanceOf[F]
+    def forceAs[F <: Force[N]](name: String) = s.force(name).asInstanceOf[F]
   }
 }
