@@ -2,16 +2,16 @@ name := "scala-js-d3v4"
 version := "0.1.0-SNAPSHOT"
 
 scalaVersion := "2.11.8"
-crossScalaVersions := Seq("2.10.6", "2.11.8", "2.12.1")
+crossScalaVersions := Seq("2.10.6", "2.11.11", "2.12.2")
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= (
-  "org.scala-js" %%% "scalajs-dom" % "0.9.1" ::
+  "org.scala-js" %%% "scalajs-dom" % "0.9.2" ::
   Nil
 )
 npmDependencies in Compile ++= (
-  "d3" -> "4.6.0" ::
+  "d3" -> "4.9.1" ::
   Nil
 )
 
