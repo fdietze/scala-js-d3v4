@@ -24,4 +24,6 @@ trait DragEvent extends BaseEvent {
 trait DragBehavior[Datum] extends js.Function1[Selection[Datum], Unit] {
   def on(typenames: String, listener: ListenerFunction0): DragBehavior[Datum] = js.native
   def on(typenames: String, listener: ListenerFunction1[Datum]): DragBehavior[Datum] = js.native
+  def clickDistance(distance: Double): DragBehavior[Datum] = js.native
+  def clickDistance(): Double = js.native
 }
