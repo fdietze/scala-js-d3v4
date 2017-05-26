@@ -37,4 +37,6 @@ trait ZoomEvent extends BaseEvent {
 @js.native
 trait ZoomBehavior[Datum] extends js.Function1[Selection[Datum], Unit] {
   def on(typenames: String, listener: ListenerFunction0): ZoomBehavior[Datum] = js.native
+  def scaleExtent(extent: js.Array[Double]):ZoomBehavior[Datum] = js.native
+  def scaleExtent():js.Array[Double] = js.native
 }
