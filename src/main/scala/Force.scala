@@ -79,6 +79,7 @@ trait ManyBody[N <: SimulationNode] extends ForceImpl[N] {
 @js.native
 trait Collision[N <: SimulationNode] extends ForceImpl[N] {
   def radius(radius: js.Function1[N, Double]): this.type = js.native
+  def strength(strength: Double): this.type = js.native
 }
 
 @js.native
