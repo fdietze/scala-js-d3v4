@@ -1,7 +1,7 @@
 package org.scalajs.d3v4
 
 import scalajs.js
-import scalajs.js.{undefined, `|`}
+import scalajs.js.{ undefined, `|` }
 import scala.scalajs.js.annotation._
 
 // https://github.com/d3/d3-force
@@ -74,6 +74,13 @@ trait PositioningY[N <: SimulationNode] extends ForceImpl[N] {
 @js.native
 trait ManyBody[N <: SimulationNode] extends ForceImpl[N] {
   def strength(strength: Double): this.type = js.native
+  def strength(strength: js.Function1[N, Double]): this.type = js.native
+  def theta(theta: Double): this.type = js.native
+  def theta(): Double = js.native
+  def distanceMin(distance: Double): this.type = js.native
+  def distanceMin(): Double = js.native
+  def distanceMax(distance: Double): this.type = js.native
+  def distanceMax(): Double = js.native
 }
 
 @js.native
