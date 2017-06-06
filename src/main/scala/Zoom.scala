@@ -43,4 +43,6 @@ trait ZoomBehavior[Datum] extends js.Function1[Selection[Datum], Unit] {
   def translateBy(selection: Selection[Datum], x: Double, y: Double): Transform = js.native
   def scaleBy(selection: Selection[Datum], k: Double): Transform = js.native
   def scaleTo(selection: Selection[Datum], k: Double): Transform = js.native
+  def clickDistance(distance: Double): ZoomBehavior[Datum] = js.native
+  def clickDistance(): Double = js.native
 }
