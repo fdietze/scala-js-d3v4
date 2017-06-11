@@ -1,7 +1,7 @@
 package org.scalajs.d3v4
 
 import scalajs.js
-import scalajs.js.{undefined, `|`}
+import scalajs.js.{ undefined, `|` }
 import scala.scalajs.js.annotation._
 
 // https://github.com/d3/d3-scale
@@ -13,10 +13,10 @@ object d3scale extends js.Object {
   def scaleLog(): LogScale = js.native
   def scaleTime(): TimeScale = js.native
   def scaleOrdinal(values: js.Array[String]): OrdinalScale = js.native
-  def schemeCategory10: js.Array[String]                   = js.native
-  def schemeCategory20: js.Array[String]                   = js.native
-  def schemeCategory20b: js.Array[String]                  = js.native
-  def schemeCategory20c: js.Array[String]                  = js.native
+  def schemeCategory10: js.Array[String] = js.native
+  def schemeCategory20: js.Array[String] = js.native
+  def schemeCategory20b: js.Array[String] = js.native
+  def schemeCategory20c: js.Array[String] = js.native
 }
 
 @js.native
@@ -46,7 +46,7 @@ trait TimeScale extends ContinuousScale[TimeScale] {
 }
 
 @js.native
-class OrdinalScale extends js.Object {
+trait OrdinalScale extends js.Object {
   def domain(values: js.Array[String]): this.type = js.native
-  def apply(string: String): String               = js.native
+  def apply(string: String): String = js.native
 }
