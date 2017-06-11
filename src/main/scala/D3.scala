@@ -48,11 +48,11 @@ package object d3v4 {
   implicit def d3toD3Quadtree(d3t: d3.type): d3quadtree.type = d3quadtree
   implicit def d3toD3Zoom(d3t: d3.type): d3zoom.type = d3zoom
 
-  implicit class SelectionExtensions[Datum](s: Selection[Datum]) {
+  implicit class SelectionExtensions[Datum](val s: Selection[Datum]) extends AnyVal {
     def nodeAs[T <: dom.EventTarget] = s.node().asInstanceOf[T]
   }
 
-  implicit class SimulationExtensions[N <: SimulationNode](s: Simulation[N]) {
+  implicit class SimulationExtensions[N <: SimulationNode](val s: Simulation[N]) extends AnyVal {
     def forceAs[F <: Force[N]](name: String) = s.force(name).asInstanceOf[F]
   }
 }
