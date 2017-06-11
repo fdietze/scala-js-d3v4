@@ -1,3 +1,5 @@
+[![](https://jitpack.io/v/fdietze/scala-js-d3v4.svg)](https://jitpack.io/#fdietze/scala-js-d3v4)
+
 # ScalaJS facade types for D3 version 4
 * Heavily inspired by [spaced/scala-js-d3](https://github.com/spaced/scala-js-d3)
 * D3 modules are imported automatically by bundler when needed.
@@ -6,8 +8,8 @@
 * Set up [Scalajs-Bundler](https://scalacenter.github.io/scalajs-bundler/) for your project.
 * In your `build.sbt`:
   ```scala
-
-  libraryDependencies += "com.github.fdietze" %%% "scala-js-d3v4" % "0.1.0-SNAPSHOT"
+  resolvers += "jitpack" at "https://jitpack.io"
+  libraryDependencies += "com.github.fdietze" % "scala-js-d3v4" % "master-SNAPSHOT"
   ```
 * Use d3 like you know it from JavaScript (http://devdocs.io/d3~4):
 
