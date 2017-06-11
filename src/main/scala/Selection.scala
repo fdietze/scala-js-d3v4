@@ -72,6 +72,7 @@ trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
 
 @js.native
 trait Selection[Datum] extends BaseSelection[Datum, Selection[Datum]] {
+  def select[SelData](selector: String): Selection[SelData] = js.native
   def selectAll[SelData](selector: String): Selection[SelData] = js.native
   def node(): dom.EventTarget = js.native
 }
