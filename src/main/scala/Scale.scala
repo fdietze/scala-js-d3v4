@@ -12,6 +12,11 @@ object d3scale extends js.Object {
   def scaleLinear(): LinearScale = js.native
   def scaleLog(): LogScale = js.native
   def scaleTime(): TimeScale = js.native
+  def scaleOrdinal(values: js.Array[String]): OrdinalScale = js.native
+  def schemeCategory10: js.Array[String]                   = js.native
+  def schemeCategory20: js.Array[String]                   = js.native
+  def schemeCategory20b: js.Array[String]                  = js.native
+  def schemeCategory20c: js.Array[String]                  = js.native
 }
 
 @js.native
@@ -38,4 +43,10 @@ trait LinearScale extends ContinuousScale[LinearScale] {
 trait TimeScale extends ContinuousScale[TimeScale] {
   def apply(value: js.Date): Double = js.native
   def domain(domain: js.Array[js.Date]): TimeScale = js.native
+}
+
+@js.native
+class OrdinalScale extends js.Object {
+  def domain(values: js.Array[String]): this.type = js.native
+  def apply(string: String): String               = js.native
 }
