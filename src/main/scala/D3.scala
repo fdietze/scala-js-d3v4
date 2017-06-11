@@ -45,6 +45,7 @@ package object d3v4 {
   implicit def d3toD3Selection(d3t: d3.type): d3selection.type = d3selection
   implicit def d3toD3Shape(d3t: d3.type): d3shape.type = d3shape
   implicit def d3toD3Time(d3t: d3.type): d3time.type = d3time
+  implicit def d3toD3Quadtree(d3t: d3.type): d3quadtree.type = d3quadtree
   implicit def d3toD3Zoom(d3t: d3.type): d3zoom.type = d3zoom
 
   implicit class SelectionExtensions[Datum](s: Selection[Datum]) {
