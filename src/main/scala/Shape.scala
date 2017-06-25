@@ -11,6 +11,8 @@ object d3shape extends js.Object {
   def pie(): PieGenerator = js.native
   def arc(): ArcGenerator = js.native
   def line(): LineGenerator = js.native
+  def curveLinear: CurveFactory = js.native
+  def curveLinearClosed: CurveFactory = js.native
   def curveCatmullRomClosed: CurveCatmullRomFactory = js.native
 }
 
@@ -25,8 +27,7 @@ trait LineGenerator extends BaseLineGenerator[LineGenerator] {
 }
 
 @js.native
-trait CurveFactory extends js.Object {
-}
+trait CurveFactory extends js.Object
 
 @js.native
 trait CurveCatmullRomFactory extends CurveFactory {
