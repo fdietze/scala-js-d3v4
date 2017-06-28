@@ -1,7 +1,7 @@
 package org.scalajs.d3v4
 
 import scalajs.js
-import scalajs.js.{ undefined, `|` }
+import scalajs.js.{undefined, `|`}
 import scala.scalajs.js.annotation._
 
 // https://github.com/d3/d3-force
@@ -20,23 +20,33 @@ object d3force extends js.Object {
 
 @js.native
 trait Simulation[N <: SimulationNode] extends js.Object {
-  def force(name: String, force: Force[N]): this.type = js.native
-  def force(name: String): Force[N] = js.native
-  def nodes(nodes: js.Array[N]): this.type = js.native
-  def nodes(): js.Array[N] = js.native
-  def on(typenames: String, listener: js.ThisFunction0[Simulation[N], Any]): this.type = js.native
-  def on(typenames: String, listener: ListenerFunction0): this.type = js.native
-  def on(typenames: String): this.type = js.native
-  def find(x: Double, y: Double, radius: Double = Double.PositiveInfinity): js.UndefOr[N] = js.native
-  def alpha(alpha: Double): this.type = js.native
-  def alpha(): Double = js.native
-  def alphaTarget(target: Double): this.type = js.native
-  def alphaTarget(): Double = js.native
-  def alphaMin(min: Double): this.type = js.native
-  def alphaMin(): Double = js.native
   def restart(): this.type = js.native
   def stop(): this.type = js.native
   def tick(): this.type = js.native
+
+  def nodes(nodes: js.Array[N]): this.type = js.native
+  def nodes(): js.Array[N] = js.native
+
+  def alpha(alpha: Double): this.type = js.native
+  def alpha(): Double = js.native
+  def alphaMin(min: Double): this.type = js.native
+  def alphaMin(): Double = js.native
+  def alphaDecay(decay: Double): this.type = js.native
+  def alphaDecay(): Double = js.native
+  def alphaTarget(target: Double): this.type = js.native
+  def alphaTarget(): Double = js.native
+  def velocityDecay(decay: Double): this.type = js.native
+  def velocityDecay(): Double = js.native
+
+  def force(name: String, force: Force[N]): this.type = js.native
+  def force(name: String): Force[N] = js.native
+
+  def find(x: Double, y: Double): js.UndefOr[N] = js.native
+  def find(x: Double, y: Double, radius: Double): js.UndefOr[N] = js.native
+
+  def on(typenames: String, listener: js.ThisFunction0[Simulation[N], Any]): this.type = js.native
+  def on(typenames: String, listener: ListenerFunction0): this.type = js.native
+  def on(typenames: String): this.type = js.native
 }
 
 @ScalaJSDefined
