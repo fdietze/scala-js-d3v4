@@ -11,7 +11,7 @@ libraryDependencies ++= (
   Nil
 )
 npmDependencies in Compile ++= (
-  "d3" -> "4.9.1" ::
+  "d3" -> "4.11.0" ::
   Nil
 )
 
