@@ -8,13 +8,15 @@ import scala.scalajs.js.annotation._
 @JSImport("d3-color", JSImport.Namespace)
 @js.native
 object d3color extends js.Object {
+  def lab(l:Double, a:Double, b:Double):Lab = js.native
+  def lab(l:Double, a:Double, b:Double, opacity:Double):Lab = js.native
   def lab(specifier:String):Lab = js.native
   def lab(color:Color):Lab = js.native
-  def lab(l:Double, a:Double, b:Double):Lab = js.native
 
-  def hcl(specifier:String):Hcl = js.native
   def hcl(h:Double, c:Double, l:Double):Hcl = js.native
   def hcl(h:Double, c:Double, l:Double, opacity:Double):Hcl = js.native
+  def hcl(specifier:String):Hcl = js.native
+  def hcl(color:Color):Hcl = js.native
 }
 
 @js.native
