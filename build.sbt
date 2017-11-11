@@ -15,6 +15,8 @@ npmDependencies in Compile ++= (
   Nil
 )
 
+useYarn := true
+
 scalacOptions ++=
   "-encoding" :: "UTF-8" ::
   "-unchecked" ::
