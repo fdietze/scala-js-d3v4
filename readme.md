@@ -9,7 +9,7 @@
 * In your `build.sbt`:
   ```scala
   resolvers += "jitpack" at "https://jitpack.io"
-  libraryDependencies += "com.github.fdietze" % "scala-js-d3v4" % "master-SNAPSHOT"
+  libraryDependencies += "com.github.fdietze" %% "scala-js-d3v4" % "master-SNAPSHOT"
   ```
 * Use d3 like you know it from JavaScript (http://devdocs.io/d3~4):
 
