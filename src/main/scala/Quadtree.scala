@@ -35,6 +35,6 @@ sealed trait QuadtreeNode[Datum] extends js.Any {
   def length:js.UndefOr[Int] = js.native
   def apply(index:Int):QuadtreeNode[Datum] = js.native
   def data:Datum = js.native
-  def next:QuadtreeNode[Datum] = js.native
+  def next:js.UndefOr[QuadtreeNode[Datum]] = js.native
 }
 
