@@ -66,6 +66,11 @@ trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
   def text[R](value: ValueFunction0[R]): T = js.native
   def text[R](value: ValueFunction1[R]): T = js.native
 
+  def html(): String = js.native
+  def html(value: String): T = js.native
+  def html[R](value: ValueFunction0[R]): T = js.native
+  def html[R](value: ValueFunction1[R]): T = js.native
+
   def call(func: js.Function, args: js.Any*): T = js.native
   def remove(): T = js.native
 }
