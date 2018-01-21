@@ -7,11 +7,11 @@ crossScalaVersions := Seq("2.10.6", "2.11.11", "2.12.4")
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= (
-  "org.scala-js" %%% "scalajs-dom" % "0.9.3" ::
+  "org.scala-js" %%% "scalajs-dom" % "0.9.4" ::
   Nil
 )
 npmDependencies in Compile ++= (
-  "d3" -> "4.11.0" ::
+  "d3" -> "4.12.2" ::
   Nil
 )
 
