@@ -14,7 +14,7 @@
 * Use d3 like you know it from JavaScript (http://devdocs.io/d3~4):
 
   ```scala
-  import org.scalajs.d3v4._
+  import d3v4._
 
   d3.___
   ```

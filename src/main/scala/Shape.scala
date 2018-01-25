@@ -1,4 +1,4 @@
-package org.scalajs.d3v4
+package d3v4
 
 import scalajs.js
 import scalajs.js.{ undefined, `|` }

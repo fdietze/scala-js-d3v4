@@ -1,8 +1,7 @@
-package org.scalajs
-
 import scalajs.js.`|`
 import scalajs.js
 import scala.scalajs.js.annotation._
+import org.scalajs.dom
 
 package d3v4 {
   object d3
