@@ -19,7 +19,7 @@
   d3.___
   ```
 
-* Contribute missing facades as pull requests.
+* Contribute missing facades as pull requests. Most of the time this can be done in a few lines of code. You get a good overview of what exists and what is missing when looking at [src/main/scala](https://github.com/fdietze/scala-js-d3v4/tree/master/src/main/scala). Each File corresponds to a module in d3: https://devdocs.io/d3~4. To add a new module, simply create a new file and implement the facades you need. Finally add an implicit to your module in [D3.scala](https://github.com/fdietze/scala-js-d3v4/blob/master/src/main/scala/D3.scala#L38).
 * Don't hesitate to open new Issues.
 
 ## Facade writing guidelines
