@@ -49,7 +49,6 @@ trait Simulation[N <: SimulationNode] extends js.Object {
   def on(typenames: String): this.type = js.native
 }
 
-@ScalaJSDefined
 trait Force[N <: SimulationNode] extends js.Object {
   def force(alpha: Double)
   def initialize(nodes: js.Array[N])
