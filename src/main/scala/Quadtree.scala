@@ -28,6 +28,7 @@ trait Quadtree[Datum] extends js.Object {
   def find(x: Double, y: Double, radius: Double): Datum = js.native
   def visit(callback: js.Function5[QuadtreeNode[Datum], Double, Double, Double, Double, Boolean]): Quadtree[Datum] = js.native
   def visitAfter(callback: js.Function5[QuadtreeNode[Datum], Double, Double, Double, Double, Any]): Quadtree[Datum] = js.native
+  def copy:Quadtree[Datum] = js.native
 }
 
 @js.native 
