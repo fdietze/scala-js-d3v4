@@ -28,7 +28,10 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum, T]] extends BaseDom[Datum, 
   def data[NewDatum <: Datum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
   def data(): js.Array[Datum] = js.native
 
+  def each[C <: CurrentDom](function: ListenerThisFunction0[C]): Unit = js.native
   def each[C <: CurrentDom](function: ListenerThisFunction1[C]): Unit = js.native
+  def each[C <: CurrentDom](function: ListenerThisFunction2[C]): Unit = js.native
+  def each[C <: CurrentDom](function: ListenerThisFunction3[C]): Unit = js.native
 }
 
 @js.native
