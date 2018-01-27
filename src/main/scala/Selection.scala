@@ -38,25 +38,25 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum, T]] extends BaseDom[Datum, 
 
 @js.native
 trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
-  type ValueFunction3[Return] = js.Function3[Datum, Index, Group, Return]
-  type ValueFunction2[Return] = js.Function2[Datum, Index, Return]
-  type ValueFunction1[Return] = js.Function1[Datum, Return]
   type ValueFunction0[Return] = js.Function0[Return]
+  type ValueFunction1[Return] = js.Function1[Datum, Return]
+  type ValueFunction2[Return] = js.Function2[Datum, Index, Return]
+  type ValueFunction3[Return] = js.Function3[Datum, Index, Group, Return]
 
-  type ListenerFunction3 = ValueFunction3[Unit]
-  type ListenerFunction2 = ValueFunction2[Unit]
-  type ListenerFunction1 = ValueFunction1[Unit]
   type ListenerFunction0 = ValueFunction0[Unit]
+  type ListenerFunction1 = ValueFunction1[Unit]
+  type ListenerFunction2 = ValueFunction2[Unit]
+  type ListenerFunction3 = ValueFunction3[Unit]
 
-  type ValueThisFunction3[C <: CurrentDom, Return] = js.ThisFunction3[C, Datum, Index, Group, Return]
-  type ValueThisFunction2[C <: CurrentDom, Return] = js.ThisFunction2[C, Datum, Index, Return]
-  type ValueThisFunction1[C <: CurrentDom, Return] = js.ThisFunction1[C, Datum, Return]
   type ValueThisFunction0[C <: CurrentDom, Return] = js.ThisFunction0[C, Return]
+  type ValueThisFunction1[C <: CurrentDom, Return] = js.ThisFunction1[C, Datum, Return]
+  type ValueThisFunction2[C <: CurrentDom, Return] = js.ThisFunction2[C, Datum, Index, Return]
+  type ValueThisFunction3[C <: CurrentDom, Return] = js.ThisFunction3[C, Datum, Index, Group, Return]
 
-  type ListenerThisFunction3[C <: CurrentDom] = ValueThisFunction3[C, Unit]
-  type ListenerThisFunction2[C <: CurrentDom] = ValueThisFunction2[C, Unit]
-  type ListenerThisFunction1[C <: CurrentDom] = ValueThisFunction1[C, Unit]
   type ListenerThisFunction0[C <: CurrentDom] = ValueThisFunction0[C, Unit]
+  type ListenerThisFunction1[C <: CurrentDom] = ValueThisFunction1[C, Unit]
+  type ListenerThisFunction2[C <: CurrentDom] = ValueThisFunction2[C, Unit]
+  type ListenerThisFunction3[C <: CurrentDom] = ValueThisFunction3[C, Unit]
 
   def style(name: String, value: String): T = js.native
   def style[R](name: String, value: ValueFunction1[R]): T = js.native

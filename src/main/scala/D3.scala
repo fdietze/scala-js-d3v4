@@ -25,15 +25,15 @@ package object d3v4 {
   type Index = Int
   type Group = js.UndefOr[Int]
 
-  type ValueFunction3[Datum, Return] = js.Function3[Datum, Index, Group, Return]
-  type ValueFunction2[Datum, Return] = js.Function2[Datum, Index, Return]
-  type ValueFunction1[Datum, Return] = js.Function1[Datum, Return]
   type ValueFunction0[Return] = js.Function0[Return]
+  type ValueFunction1[Datum, Return] = js.Function1[Datum, Return]
+  type ValueFunction2[Datum, Return] = js.Function2[Datum, Index, Return]
+  type ValueFunction3[Datum, Return] = js.Function3[Datum, Index, Group, Return]
 
-  type ListenerFunction3[Datum] = ValueFunction3[Datum, Unit]
-  type ListenerFunction2[Datum] = ValueFunction2[Datum, Unit]
-  type ListenerFunction1[Datum] = ValueFunction1[Datum, Unit]
   type ListenerFunction0 = ValueFunction0[Unit]
+  type ListenerFunction1[Datum] = ValueFunction1[Datum, Unit]
+  type ListenerFunction2[Datum] = ValueFunction2[Datum, Unit]
+  type ListenerFunction3[Datum] = ValueFunction3[Datum, Unit]
 
   implicit def d3toD3Axis(d3t: d3.type): d3axis.type = d3axis
   implicit def d3toD3Color(d3t: d3.type): d3color.type = d3color
