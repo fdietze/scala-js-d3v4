@@ -30,10 +30,10 @@ package object d3v4 {
   type ValueFunction1[Datum, Return] = js.Function1[Datum, Return]
   type ValueFunction0[Return] = js.Function0[Return]
 
-  type ListenerFunction3[Datum] = ValueFunction3[Datum, Any]
-  type ListenerFunction2[Datum] = ValueFunction2[Datum, Any]
-  type ListenerFunction1[Datum] = ValueFunction1[Datum, Any]
-  type ListenerFunction0 = ValueFunction0[Any]
+  type ListenerFunction3[Datum] = ValueFunction3[Datum, Unit]
+  type ListenerFunction2[Datum] = ValueFunction2[Datum, Unit]
+  type ListenerFunction1[Datum] = ValueFunction1[Datum, Unit]
+  type ListenerFunction0 = ValueFunction0[Unit]
 
   implicit def d3toD3Axis(d3t: d3.type): d3axis.type = d3axis
   implicit def d3toD3Color(d3t: d3.type): d3color.type = d3color
