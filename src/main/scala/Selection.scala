@@ -59,7 +59,15 @@ trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
   type ListenerThisFunction3[C <: CurrentDom] = ValueThisFunction3[C, Unit]
 
   def style(name: String, value: String): T = js.native
+  def style[R](name: String, value: ValueFunction0[R]): T = js.native
   def style[R](name: String, value: ValueFunction1[R]): T = js.native
+  def style[R](name: String, value: ValueFunction2[R]): T = js.native
+  def style[R](name: String, value: ValueFunction3[R]): T = js.native
+
+  def style[R](name: String, value: ValueThisFunction0[CurrentDom, R]): T = js.native // no C type parameter here, since it would be ambiguous with ValueFunction1. TODO: is there a better solution?
+  def style[C <: CurrentDom, R](name: String, value: ValueThisFunction1[C, R]): T = js.native
+  def style[C <: CurrentDom, R](name: String, value: ValueThisFunction2[C, R]): T = js.native
+  def style[C <: CurrentDom, R](name: String, value: ValueThisFunction3[C, R]): T = js.native
 
   def attr(name: String, value: String): T = js.native
   def attr(name: String, value: Double): T = js.native
