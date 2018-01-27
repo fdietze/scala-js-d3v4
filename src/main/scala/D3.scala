@@ -54,4 +54,6 @@ package object d3v4 {
   implicit class SimulationExtensions[N <: SimulationNode](val s: Simulation[N]) extends AnyVal {
     def forceAs[F <: Force[N]](name: String) = s.force(name).asInstanceOf[F]
   }
+
+  implicit def baseEventToZoomEvent(e:BaseEvent):ZoomEvent = e.asInstanceOf[ZoomEvent]
 }
