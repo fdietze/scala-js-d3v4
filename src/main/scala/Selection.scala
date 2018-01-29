@@ -24,9 +24,13 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum, T]] extends BaseDom[Datum, 
   def on(typenames: String, listener: ListenerFunction0): T = js.native
   def on(typenames: String, listener: ListenerFunction1): T = js.native
 
-  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction1[R]): Update[NewDatum] = js.native
-  def data[NewDatum <: Datum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
   def data(): js.Array[Datum] = js.native
+  def data[NewDatum <: Datum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
+  //TODO: d3 doc says that key can be a ThisFunction with this as the current node. It Doesn't work here...
+  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction0[R]): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction1[R]): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction2[R]): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction3[R]): Update[NewDatum] = js.native
 
   def each[C <: CurrentDom](function: ListenerThisFunction0[C]): Unit = js.native
   def each[C <: CurrentDom](function: ListenerThisFunction1[C]): Unit = js.native
