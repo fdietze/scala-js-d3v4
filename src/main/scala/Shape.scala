@@ -4,6 +4,8 @@ import scalajs.js
 import scalajs.js.{ undefined, `|` }
 import scala.scalajs.js.annotation._
 
+import org.scalajs.dom.CanvasRenderingContext2D
+
 // https://github.com/d3/d3-shape
 @JSImport("d3-shape", JSImport.Namespace)
 @js.native
@@ -11,13 +13,21 @@ object d3shape extends js.Object {
   def pie(): PieGenerator = js.native
   def arc(): ArcGenerator = js.native
   def line(): LineGenerator = js.native
+  def curveBasisClosed: CurveFactory = js.native
+  def curveCardinalClosed: CurveFactory = js.native
+  def curveCatmullRomClosed: CurveCatmullRomFactory = js.native
   def curveLinear: CurveFactory = js.native
   def curveLinearClosed: CurveFactory = js.native
-  def curveCatmullRomClosed: CurveCatmullRomFactory = js.native
 }
 
 @js.native
-trait BaseLineGenerator[G <: BaseLineGenerator[G]] extends js.Object {
+trait BaseGenerator[G <: BaseGenerator[G]] extends js.Object {
+  def context(context: CanvasRenderingContext2D):G = js.native
+  def context():CanvasRenderingContext2D = js.native
+}
+
+@js.native
+trait BaseLineGenerator[G <: BaseLineGenerator[G]] extends js.Object with BaseGenerator[G] {
   def curve(curve: CurveFactory): G = js.native
 }
 
@@ -55,7 +65,7 @@ trait PieArcDatum[Datum] extends ArcDatum {
 trait ArcDatum extends js.Object
 
 @js.native
-trait BaseArcGenerator[G <: BaseArcGenerator[G]] extends js.Object {
+trait BaseArcGenerator[G <: BaseArcGenerator[G]] extends js.Object with BaseGenerator[G] {
   def innerRadius(radius: Double): G = js.native
   def outerRadius(radius: Double): G = js.native
   def cornerRadius(radius: Double): G = js.native
