@@ -56,4 +56,5 @@ package object d3v4 {
   }
 
   implicit def baseEventToZoomEvent(e:BaseEvent):ZoomEvent = e.asInstanceOf[ZoomEvent]
+  implicit def baseEventToDragEvent(e:BaseEvent):DragEvent = e.asInstanceOf[DragEvent]
 }
