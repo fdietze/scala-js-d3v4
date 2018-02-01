@@ -27,66 +27,34 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum, T]] extends BaseDom[Datum, 
   def data(): js.Array[Datum] = js.native
   def data[NewDatum <: Datum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
   //TODO: d3 doc says that key can be a ThisFunction with this as the current node. It Doesn't work here...
-  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction0[R]): Update[NewDatum] = js.native
-  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction1[R]): Update[NewDatum] = js.native
-  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction2[R]): Update[NewDatum] = js.native
-  def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction3[R]): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum](data: js.Array[NewDatum], key: ValueFunction0): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum](data: js.Array[NewDatum], key: ValueFunction1): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum](data: js.Array[NewDatum], key: ValueFunction2): Update[NewDatum] = js.native
+  def data[NewDatum <: Datum](data: js.Array[NewDatum], key: ValueFunction3): Update[NewDatum] = js.native
 
-  def each[C <: CurrentDom](function: ListenerThisFunction0[C]): Unit = js.native
-  def each[C <: CurrentDom](function: ListenerThisFunction1[C]): Unit = js.native
-  def each[C <: CurrentDom](function: ListenerThisFunction2[C]): Unit = js.native
-  def each[C <: CurrentDom](function: ListenerThisFunction3[C]): Unit = js.native
+  def each[E <: CurrentDomElement](function: ListenerFunction[E]): Unit = js.native
 
   def size():Int = js.native
 }
 
 @js.native
-trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
-  type ValueFunction0[Return] = js.Function0[Return]
-  type ValueFunction1[Return] = js.Function1[Datum, Return]
-  type ValueFunction2[Return] = js.Function2[Datum, Index, Return]
-  type ValueFunction3[Return] = js.Function3[Datum, Index, Group, Return]
-
-  type ListenerFunction0 = ValueFunction0[Unit]
-  type ListenerFunction1 = ValueFunction1[Unit]
-  type ListenerFunction2 = ValueFunction2[Unit]
-  type ListenerFunction3 = ValueFunction3[Unit]
-
-  type ValueThisFunction0[C <: CurrentDom, Return] = js.ThisFunction0[C, Return]
-  type ValueThisFunction1[C <: CurrentDom, Return] = js.ThisFunction1[C, Datum, Return]
-  type ValueThisFunction2[C <: CurrentDom, Return] = js.ThisFunction2[C, Datum, Index, Return]
-  type ValueThisFunction3[C <: CurrentDom, Return] = js.ThisFunction3[C, Datum, Index, Group, Return]
-
-  type ListenerThisFunction0[C <: CurrentDom] = ValueThisFunction0[C, Unit]
-  type ListenerThisFunction1[C <: CurrentDom] = ValueThisFunction1[C, Unit]
-  type ListenerThisFunction2[C <: CurrentDom] = ValueThisFunction2[C, Unit]
-  type ListenerThisFunction3[C <: CurrentDom] = ValueThisFunction3[C, Unit]
-
-  def style(name: String, value: String): T = js.native
-  def style[R](name: String, value: ValueFunction0[R]): T = js.native
-  def style[R](name: String, value: ValueFunction1[R]): T = js.native
-  def style[R](name: String, value: ValueFunction2[R]): T = js.native
-  def style[R](name: String, value: ValueFunction3[R]): T = js.native
-
-  def style[R](name: String, value: ValueThisFunction0[CurrentDom, R]): T = js.native // no C type parameter here, since it would be ambiguous with ValueFunction1. TODO: is there a better solution?
-  def style[C <: CurrentDom, R](name: String, value: ValueThisFunction1[C, R]): T = js.native
-  def style[C <: CurrentDom, R](name: String, value: ValueThisFunction2[C, R]): T = js.native
-  def style[C <: CurrentDom, R](name: String, value: ValueThisFunction3[C, R]): T = js.native
+trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object with DatumFunctionTypes[Datum] {
+  def style[E <: CurrentDomElement](name: String, value: ValueFunction[E] | Any): T = js.native
 
   def attr(name: String, value: String): T = js.native
   def attr(name: String, value: Double): T = js.native
   def attr(name: String, value: Boolean): T = js.native
-  def attr[R](name: String, value: ValueFunction1[R]): T = js.native
+  def attr(name: String, value: ValueFunction1): T = js.native
 
   def text(): String = js.native
   def text(value: String): T = js.native
-  def text[R](value: ValueFunction0[R]): T = js.native
-  def text[R](value: ValueFunction1[R]): T = js.native
+  def text(value: ValueFunction0): T = js.native
+  def text(value: ValueFunction1): T = js.native
 
   def html(): String = js.native
   def html(value: String): T = js.native
-  def html[R](value: ValueFunction0[R]): T = js.native
-  def html[R](value: ValueFunction1[R]): T = js.native
+  def html(value: ValueFunction0): T = js.native
+  def html(value: ValueFunction1): T = js.native
 
   def call(func: js.Function, args: js.Any*): T = js.native
   def remove(): T = js.native
