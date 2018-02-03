@@ -27,6 +27,13 @@ trait DragBehavior[Datum] extends js.Function1[Selection[Datum], Unit] {
   def on(typenames: String, listener: ListenerFunction2[Datum]): DragBehavior[Datum] = js.native
   def on[E <: CurrentDom](typenames: String, listener: ListenerThisFunction2[E, Datum]): DragBehavior[Datum] = js.native
 
+  type DragSubject = js.Object // {def x:Double; def y:Double}
+  def subject(subject: ValueFunction2[Datum, DragSubject]):DragBehavior[Datum] = js.native
+
+  def subject[E <: CurrentDom](subject: ValueThisFunction0[E, DragSubject]):DragBehavior[Datum] = js.native
+  def subject[E <: CurrentDom](subject: ValueThisFunction1[E, Datum, DragSubject]):DragBehavior[Datum] = js.native
+  def subject[E <: CurrentDom](subject: ValueThisFunction2[E, Datum, DragSubject]):DragBehavior[Datum] = js.native
+
   def clickDistance(distance: Double): DragBehavior[Datum] = js.native
   def clickDistance(): Double = js.native
 }
