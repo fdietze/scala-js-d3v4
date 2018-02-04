@@ -35,4 +35,6 @@ trait Hcl extends Color {
 
 @js.native
 trait Color extends js.Object {
+  var opacity:Double = js.native
+  override def toString:String = js.native
 }
