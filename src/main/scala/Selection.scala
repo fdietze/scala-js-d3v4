@@ -112,4 +112,6 @@ trait Enter[Datum] extends js.Object {
   def append(`type`: js.Function1[Datum, dom.EventTarget]): Selection[Datum] = js.native
 
   def append(name: js.Function3[Datum, Double, Double, dom.EventTarget]): Selection[Datum] = js.native
+
+  def size():Int = js.native
 }
