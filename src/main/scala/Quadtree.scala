@@ -20,7 +20,9 @@ trait Quadtree[Datum] extends js.Object {
   def x(): js.Function1[Datum, Double] = js.native
   def y(y: js.Function1[Datum, Double]): Quadtree[Datum] = js.native
   def y(): js.Function1[Datum, Double] = js.native
+  def add(datum: Datum):Quadtree[Datum] = js.native
   def addAll[NewDatum](data: js.Array[NewDatum]): Quadtree[NewDatum] = js.native
+  def remove(datum: Datum):Quadtree[Datum] = js.native
   def root:QuadtreeNode[Datum] = js.native
   def data:js.Array[Datum] = js.native
   def size:Int = js.native
