@@ -23,6 +23,7 @@ trait BaseSelection[Datum, T <: BaseSelection[Datum, T]] extends BaseDom[Datum, 
 
   def on(typenames: String, listener: ListenerFunction0): T = js.native
   def on(typenames: String, listener: ListenerFunction1): T = js.native
+  def on(typenames: String, listener: ListenerFunction2): T = js.native
 
   def data(): js.Array[Datum] = js.native
   def data[NewDatum <: Datum](data: js.Array[NewDatum]): Update[NewDatum] = js.native
@@ -82,6 +83,7 @@ trait BaseDom[Datum, T <: BaseDom[Datum, T]] extends js.Object {
   def text(value: String): T = js.native
   def text[R](value: ValueFunction0[R]): T = js.native
   def text[R](value: ValueFunction1[R]): T = js.native
+  def text[R](value: ValueFunction2[R]): T = js.native
 
   def html(): String = js.native
   def html(value: String): T = js.native
