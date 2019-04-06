@@ -11,6 +11,16 @@
   resolvers += "jitpack" at "https://jitpack.io"
   libraryDependencies += "com.github.fdietze" % "scala-js-d3v4" % "master-SNAPSHOT"
   ```
+
+  When using [JitPack](https://jitpack.io), it is often more useful to point to a specific commit, to make your builds reproducible:
+
+  ```scala
+  libraryDependencies += "com.github.fdietze" % "scala-js-d3v4" % "08fc8de"
+  ```
+
+  Like that you can try the latest features from specific commits on `master`, other branches or PRs.
+
+
 * Use d3 like you know it from JavaScript (http://devdocs.io/d3~4):
 
   ```scala
