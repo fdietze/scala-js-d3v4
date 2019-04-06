@@ -1,6 +1,6 @@
 [![](https://jitpack.io/v/fdietze/scala-js-d3v4.svg)](https://jitpack.io/#fdietze/scala-js-d3v4)
 
-# ScalaJS facade types for D3 version 4
+# ScalaJS facade types for D3 version 5
 * Heavily inspired by [spaced/scala-js-d3](https://github.com/spaced/scala-js-d3)
 * D3 modules are imported automatically by bundler when needed.
 
