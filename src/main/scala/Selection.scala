@@ -74,6 +74,12 @@ object d3selection extends js.Object {
     def style[C <: CurrentDom, R](name: String, value: ValueThisFunction2[C, R]): T = js.native
     def style[C <: CurrentDom, R](name: String, value: ValueThisFunction3[C, R]): T = js.native
 
+    def classed(names: String, value: Boolean): T = js.native
+    def classed(names: String, value: ValueFunction0[Boolean]): T = js.native
+    def classed(names: String, value: ValueFunction1[Boolean]): T = js.native
+    def classed(names: String, value: ValueFunction2[Boolean]): T = js.native
+    def classed(names: String, value: ValueFunction3[Boolean]): T = js.native
+
     def attr(name: String, value: String): T = js.native
     def attr(name: String, value: Double): T = js.native
     def attr(name: String, value: Boolean): T = js.native
