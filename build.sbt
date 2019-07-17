@@ -1,7 +1,7 @@
 name := "scala-js-d3v4"
 version := "master-SNAPSHOT"
 
-crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8")
+crossScalaVersions := Seq("2.11.12", "2.12.8")
 scalaVersion in ThisBuild := crossScalaVersions.value.last
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
@@ -17,6 +17,12 @@ npmDependencies in Compile ++= (
 
 useYarn := true
 
+// https://stackoverflow.com/questions/57115385/how-do-i-cross-compile-a-sbt-top-level-project-with-scalajs-0-6-and-1-0-0/57120136#57120136
+scalacOptions ++= {
+  if (scalaJSVersion.startsWith("0.6.")) Seq("-P:scalajs:sjsDefinedByDefault")
+  else Nil
+}
+
 scalacOptions ++=
   "-encoding" :: "UTF-8" ::
   "-unchecked" ::
@@ -26,7 +32,6 @@ scalacOptions ++=
   "-language:_" ::
   // "-Xlint:_" ::
   // "-Ywarn-unused" ::
-  "-P:scalajs:sjsDefinedByDefault" ::
   Nil
 
 pgpSecretRing in Global := file("secring.gpg")
