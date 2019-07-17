@@ -7,7 +7,7 @@ scalaVersion in ThisBuild := crossScalaVersions.value.last
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= (
-  "org.scala-js" %%% "scalajs-dom" % "0.9.6" ::
+  "org.scala-js" %%% "scalajs-dom" % "0.9.7" ::
   Nil
 )
 npmDependencies in Compile ++= (
@@ -28,8 +28,6 @@ scalacOptions ++=
   // "-Ywarn-unused" ::
   "-P:scalajs:sjsDefinedByDefault" ::
   Nil
-
-organization in Global := "com.github.fdietze"
 
 pgpSecretRing in Global := file("secring.gpg")
 pgpPublicRing in Global := file("pubring.gpg")
@@ -56,4 +54,10 @@ pomExtra := {
       <url>https://github.com/fdietze</url>
     </developer>
   </developers>
+}
+
+scalacOptions ++= git.gitHeadCommit.value.map { headCommit =>
+  val local = baseDirectory.value.toURI
+  val remote = s"https://raw.githubusercontent.com/fdietze/scala-js-d3v4/${headCommit}/"
+  s"-P:scalajs:mapSourceURI:$local->$remote"
 }
