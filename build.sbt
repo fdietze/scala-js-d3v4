@@ -26,7 +26,6 @@ scalacOptions ++=
   "-language:_" ::
   // "-Xlint:_" ::
   // "-Ywarn-unused" ::
-  "-P:scalajs:sjsDefinedByDefault" ::
   Nil
 
 pgpSecretRing in Global := file("secring.gpg")
