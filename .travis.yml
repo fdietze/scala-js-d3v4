@@ -2,8 +2,8 @@ language: scala
 sudo: false
 
 scala:
-- 2.10.7
-- 2.11.12
+# - 2.10.7
+# - 2.11.12
 - 2.12.8
 # - 2.13.0
 
@@ -12,7 +12,7 @@ jdk:
 - openjdk11
 
 env:
-  - SCALAJS_VERSION=0.6.28
+  # - SCALAJS_VERSION=0.6.28
   - SCALAJS_VERSION=1.0.0-M8
 
 script:
