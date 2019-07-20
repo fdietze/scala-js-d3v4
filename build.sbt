@@ -17,6 +17,12 @@ npmDependencies in Compile ++= (
 
 useYarn := true
 
+// https://stackoverflow.com/questions/57115385/how-do-i-cross-compile-a-sbt-top-level-project-with-scalajs-0-6-and-1-0-0/57120136#57120136
+scalacOptions ++= {
+  if (scalaJSVersion.startsWith("0.6.")) Seq("-P:scalajs:sjsDefinedByDefault")
+  else Nil
+}
+
 scalacOptions ++=
   "-encoding" :: "UTF-8" ::
   "-unchecked" ::
