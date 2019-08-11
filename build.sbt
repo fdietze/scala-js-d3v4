@@ -1,13 +1,13 @@
 name := "scala-js-d3v4"
 version := "master-SNAPSHOT"
 
-crossScalaVersions := Seq("2.10.7", "2.11.12", "2.12.8")
+crossScalaVersions := Seq("2.11.12", "2.12.8")
 scalaVersion in ThisBuild := crossScalaVersions.value.last
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= (
-  "org.scala-js" %%% "scalajs-dom" % "0.9.6" ::
+  "org.scala-js" %%% "scalajs-dom" % "0.9.7" ::
   Nil
 )
 npmDependencies in Compile ++= (
@@ -16,6 +16,12 @@ npmDependencies in Compile ++= (
 )
 
 useYarn := true
+
+// https://stackoverflow.com/questions/57115385/how-do-i-cross-compile-a-sbt-top-level-project-with-scalajs-0-6-and-1-0-0/57120136#57120136
+scalacOptions ++= {
+  if (scalaJSVersion.startsWith("0.6.")) Seq("-P:scalajs:sjsDefinedByDefault")
+  else Nil
+}
 
 scalacOptions ++=
   "-encoding" :: "UTF-8" ::
@@ -26,10 +32,7 @@ scalacOptions ++=
   "-language:_" ::
   // "-Xlint:_" ::
   // "-Ywarn-unused" ::
-  "-P:scalajs:sjsDefinedByDefault" ::
   Nil
-
-organization in Global := "com.github.fdietze"
 
 pgpSecretRing in Global := file("secring.gpg")
 pgpPublicRing in Global := file("pubring.gpg")
@@ -56,4 +59,10 @@ pomExtra := {
       <url>https://github.com/fdietze</url>
     </developer>
   </developers>
+}
+
+scalacOptions ++= git.gitHeadCommit.value.map { headCommit =>
+  val local = baseDirectory.value.toURI
+  val remote = s"https://raw.githubusercontent.com/fdietze/scala-js-d3v4/${headCommit}/"
+  s"-P:scalajs:mapSourceURI:$local->$remote"
 }
