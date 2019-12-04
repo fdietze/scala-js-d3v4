@@ -3,6 +3,6 @@
 jdk:
   - oraclejdk8
 before_install:
-   - wget http://central.maven.org/maven2/org/scala-sbt/sbt-launch/1.0.4/sbt-launch-1.0.4.jar
+   - wget http://central.maven.org/maven2/org/scala-sbt/sbt-launch/1.3.4/sbt-launch-1.3.4.jar
 install:
-   - java -jar sbt-launch-1.0.4.jar publishM2
+   - java -jar sbt-launch-1.3.4.jar publishM2
