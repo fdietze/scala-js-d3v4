@@ -1,3 +1,4 @@
 target/
 *.gpg
 sonatype.sbt
+project/metals.sbt
