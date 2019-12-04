@@ -66,3 +66,5 @@ scalacOptions ++= git.gitHeadCommit.value.map { headCommit =>
   val remote = s"https://raw.githubusercontent.com/fdietze/scala-js-d3v4/${headCommit}/"
   s"-P:scalajs:mapSourceURI:$local->$remote"
 }
+
+Global / onChangedBuildSource := IgnoreSourceChanges
