@@ -1,7 +1,7 @@
 name := "scala-js-d3v4"
 version := "master-SNAPSHOT"
 
-crossScalaVersions := Seq("2.11.12", "2.12.8")
+crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 scalaVersion in ThisBuild := crossScalaVersions.value.last
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
