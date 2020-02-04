@@ -11,7 +11,7 @@ jdk:
 - openjdk11
 
 env:
-  - SCALAJS_VERSION=0.6.31
+  - SCALAJS_VERSION=0.6.32
   - SCALAJS_VERSION=1.0.0-RC2
 
 script:
