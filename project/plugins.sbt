@@ -2,7 +2,7 @@
 val scalaJSVersion = Option(System.getenv("SCALAJS_VERSION")).getOrElse("0.6.32")
 addSbtPlugin("org.scala-js" % "sbt-scalajs" % scalaJSVersion)
 val bundlerArtifact = if (scalaJSVersion.startsWith("0.6.")) "sbt-scalajs-bundler-sjs06" else "sbt-scalajs-bundler"
-addSbtPlugin("ch.epfl.scala" % bundlerArtifact % "0.17.0")
+addSbtPlugin("ch.epfl.scala" % bundlerArtifact % "0.18.0")
 
 addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.1")
 addSbtPlugin("com.jsuereth" % "sbt-pgp" % "2.0.1")
