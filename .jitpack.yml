@@ -1,2 +1,2 @@
 install:
-   - SBT_OPTS="-Xms1G -Xmx8G -Xss16M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC" JAsbt +publishM2
+   - SBT_OPTS="-Xms1G -Xmx8G -Xss16M -XX:+CMSClassUnloadingEnabled -XX:+UseConcMarkSweepGC" sbt +publishM2
