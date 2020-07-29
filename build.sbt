@@ -34,32 +34,32 @@ scalacOptions ++=
   // "-Ywarn-unused" ::
   Nil
 
-pgpSecretRing in Global := file("secring.gpg")
-pgpPublicRing in Global := file("pubring.gpg")
-pgpPassphrase in Global := Some("".toCharArray)
+/* pgpSecretRing in Global := file("secring.gpg") */
+/* pgpPublicRing in Global := file("pubring.gpg") */
+/* pgpPassphrase in Global := Some("".toCharArray) */
 
-organization in Global := "com.github.fdietze"
+/* organization in Global := "com.github.fdietze" */
 
-pomExtra := {
-  <url>https://github.com/fdietze/scala-js-d3v4</url>
-  <licenses>
-    <license>
-      <name>MIT</name>
-      <url>http://opensource.org/licenses/MIT</url>
-    </license>
-  </licenses>
-  <scm>
-    <url>https://github.com/fdietze/scala-js-d3v4</url>
-    <connection>scm:git:git@github.com:fdietze/scala-js-d3v4.git</connection>
-  </scm>
-  <developers>
-    <developer>
-      <id>fdietze</id>
-      <name>Felix Dietze</name>
-      <url>https://github.com/fdietze</url>
-    </developer>
-  </developers>
-}
+/* pomExtra := { */
+/*   <url>https://github.com/fdietze/scala-js-d3v4</url> */
+/*   <licenses> */
+/*     <license> */
+/*       <name>MIT</name> */
+/*       <url>http://opensource.org/licenses/MIT</url> */
+/*     </license> */
+/*   </licenses> */
+/*   <scm> */
+/*     <url>https://github.com/fdietze/scala-js-d3v4</url> */
+/*     <connection>scm:git:git@github.com:fdietze/scala-js-d3v4.git</connection> */
+/*   </scm> */
+/*   <developers> */
+/*     <developer> */
+/*       <id>fdietze</id> */
+/*       <name>Felix Dietze</name> */
+/*       <url>https://github.com/fdietze</url> */
+/*     </developer> */
+/*   </developers> */
+/* } */
 
 scalacOptions ++= git.gitHeadCommit.value.map { headCommit =>
   val local = baseDirectory.value.toURI
