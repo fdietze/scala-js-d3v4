@@ -7,7 +7,7 @@ scalaVersion in ThisBuild := crossScalaVersions.value.last
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= (
-  "org.scala-js" %%% "scalajs-dom" % "1.0.0" ::
+  "org.scala-js" %%% "scalajs-dom" % "1.1.0" ::
   Nil
 )
 npmDependencies in Compile ++= (
