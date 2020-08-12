@@ -5,21 +5,17 @@
 * D3 modules are imported automatically by bundler when needed.
 
 ## Usage
+Supported are ScalaJS` 1.0` with Scala `2.12` and `2.13`.
+
+
 * Set up [Scalajs-Bundler](https://scalacenter.github.io/scalajs-bundler/) for your project.
 * In your `build.sbt`:
   ```scala
   resolvers += "jitpack" at "https://jitpack.io"
-  libraryDependencies += "com.github.fdietze" % "scala-js-d3v4" % "master-SNAPSHOT"
+  libraryDependencies += "com.github.fdietze.scala-js-d3v4" %%% "scala-js-d3v4" % "809f086"
   ```
 
-  When using [JitPack](https://jitpack.io), it is often more useful to point to a specific commit, to make your builds reproducible:
-
-  ```scala
-  libraryDependencies += "com.github.fdietze" % "scala-js-d3v4" % "08fc8de"
-  ```
-
-  Like that you can try the latest features from specific commits on `master`, other branches or PRs.
-
+  Don't forget to update the commit hash. You can also use the hashes of branches and PRs.
 
 * Use d3 like you know it from JavaScript (http://devdocs.io/d3~4):
 
