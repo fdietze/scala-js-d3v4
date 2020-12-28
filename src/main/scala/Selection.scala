@@ -84,6 +84,7 @@ object d3selection extends js.Object {
     def attr(name: String, value: Double): T = js.native
     def attr(name: String, value: Boolean): T = js.native
     def attr[R](name: String, value: ValueFunction1[R]): T = js.native
+    def attr[R](name: String, value: ValueFunction2[R]): T = js.native
 
     def text(): String = js.native
     def text(value: String): T = js.native
