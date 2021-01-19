@@ -38,6 +38,8 @@ object d3selection extends js.Object {
     def each[C <: CurrentDom](function: ListenerThisFunction2[C]): Unit = js.native
     def each[C <: CurrentDom](function: ListenerThisFunction3[C]): Unit = js.native
 
+    def merge[O <: BaseSelection[Datum, O]](other: BaseSelection[Datum, O]): O = js.native
+
     def size(): Int = js.native
   }
 
@@ -105,7 +107,9 @@ object d3selection extends js.Object {
   trait Selection[Datum] extends BaseSelection[Datum, Selection[Datum]] {
     def select[SelData](selector: String): Selection[SelData] = js.native
     def selectAll[SelData](selector: String): Selection[SelData] = js.native
-    def node(): dom.EventTarget = js.native
+    def filter(selector: String): Selection[Datum] = js.native
+    def filter(f: js.Function1[Datum, Boolean]): Selection[Datum] = js.native
+    def node(): dom.Element = js.native
   }
 
   @js.native

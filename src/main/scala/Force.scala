@@ -48,8 +48,8 @@ object d3force extends js.Object {
     def on(typenames: String): this.type = js.native
   }
   trait Force[N <: SimulationNode] extends js.Object {
-    def force(alpha: Double)
-    def initialize(nodes: js.Array[N])
+    def force(alpha: Double): Unit
+    def initialize(nodes: js.Array[N]): Unit
   }
 
   @js.native

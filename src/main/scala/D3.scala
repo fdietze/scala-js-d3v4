@@ -22,6 +22,7 @@ package d3v4 {
     trait BaseEvent extends js.Object {
       var `type`: String = js.native
       var sourceEvent: dom.Event = js.native
+      def active: Int = js.native
     }
 
     type DragEvent = d3drag.DragEvent

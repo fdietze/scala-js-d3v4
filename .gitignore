@@ -2,3 +2,5 @@ target/
 *.gpg
 sonatype.sbt
 project/metals.sbt
+.bsp/
+.idea/
