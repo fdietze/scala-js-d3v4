@@ -17,6 +17,7 @@ package d3v4 {
     @inline implicit def d3toD3Time(d3t: d3.type): d3time.type = d3time
     @inline implicit def d3toD3Quadtree(d3t: d3.type): d3quadtree.type = d3quadtree
     @inline implicit def d3toD3Zoom(d3t: d3.type): d3zoom.type = d3zoom
+    @inline implicit def d3toD3Transition(d3t: d3.type): d3transition.type = d3transition
 
     @js.native
     trait BaseEvent extends js.Object {
@@ -37,6 +38,7 @@ package d3v4 {
     type Simulation[N <: SimulationNode] = d3force.Simulation[N]
     type Quadtree[Datum] = d3quadtree.Quadtree[Datum]
     type QuadtreeNode[Datum] = d3quadtree.QuadtreeNode[Datum]
+    type Transition[Datum] = d3transition.Transition[Datum]
   }
 }
 
