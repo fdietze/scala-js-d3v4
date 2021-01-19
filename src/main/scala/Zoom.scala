@@ -43,6 +43,7 @@ object d3zoom extends js.Object {
     def scaleExtent(extent: js.Array[Double]): ZoomBehavior[Datum] = js.native
     def scaleExtent(): js.Array[Double] = js.native
     def transform(selection: Selection[Datum], transform: Transform): Transform = js.native
+    def transform(transition: Transition[Datum], transform: Transform): Transform = js.native
     def translateBy(selection: Selection[Datum], x: Double, y: Double): Transform = js.native
     def scaleBy(selection: Selection[Datum], k: Double): Transform = js.native
     def scaleTo(selection: Selection[Datum], k: Double): Transform = js.native
