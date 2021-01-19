@@ -8,6 +8,13 @@ import scala.scalajs.js.annotation._
 @js.native
 object d3transition extends js.Object {
 
+  /** @see [[https://github.com/d3/d3-transition#transition]] */
+  def transition(): Transition[dom.EventTarget] = js.native
+
+  /** @see [[https://github.com/d3/d3-transition#transition]] */
+  def transition(name: String): Transition[dom.EventTarget] = js.native
+
+  /** @see [[https://github.com/d3/d3-transition#transition_duration]] */
   def duration(value: Double): Transition[dom.EventTarget] = js.native
 
   @js.native
