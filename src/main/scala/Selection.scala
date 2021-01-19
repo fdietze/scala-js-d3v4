@@ -106,7 +106,11 @@ object d3selection extends js.Object {
     def select[SelData](selector: String): Selection[SelData] = js.native
     def selectAll[SelData](selector: String): Selection[SelData] = js.native
     def node(): dom.EventTarget = js.native
+
+    /** @see [[d3transition]] */
     def transition(): Transition[Datum] = js.native
+
+    /** @see [[d3transition]] */
     def transition(name: String): Transition[Datum] = js.native
   }
 
