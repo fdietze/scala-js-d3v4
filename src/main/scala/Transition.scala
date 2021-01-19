@@ -19,7 +19,10 @@ object d3transition extends js.Object {
 
   @js.native
   trait Transition[Datum] extends js.Object {
+
+    /** @see [[https://github.com/d3/d3-transition#transition_duration]] */
     def duration(value: Double): Transition[Datum] = js.native
+
   }
 
 }
