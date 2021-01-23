@@ -1,3 +1,5 @@
+package d3v4
+
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExportAll, JSImport}
 
