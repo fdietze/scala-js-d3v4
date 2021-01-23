@@ -13,19 +13,19 @@ import scala.scalajs.js.annotation.{JSExportAll, JSImport}
 object d3hierarchy extends js.Object {
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[N <: HierarchyNode[N]](data: N): Hierarchy[N] = js.native
+  def hierarchy[Datum](data: Datum): Hierarchy[Datum] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[N <: HierarchyNode[N]](data: N, children: js.Function1[N, js.UndefOr[js.Array[N]]]): Hierarchy[N] = js.native
+  def hierarchy[Datum](data: Datum, children: js.Function1[Datum, js.UndefOr[js.Array[Datum]]]): Hierarchy[Datum] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
-  def pack[N <: HierarchyNode[N] with PackNode](): Pack[N] = js.native
+  def pack[Datum](): Pack[Datum] = js.native
 
   /** @see [[hierarchy]] */
   @js.native
-  trait Hierarchy[N <: HierarchyNode[N]] extends js.Object {
+  trait Hierarchy[Datum] extends js.Object {
 
-    def data: N = js.native
+    def data: Datum = js.native
     def depth: js.UndefOr[Int] = js.native
     def height: js.UndefOr[Int] = js.native
     def parent: js.UndefOr[this.type] = js.native
@@ -44,7 +44,7 @@ object d3hierarchy extends js.Object {
     //def find(filter: ???): ??? = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_path]] */
-    def path(target: N): js.Array[this.type] = js.native
+    def path(target: Datum): js.Array[this.type] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_links]] */
     def links(): js.Array[this.type] = js.native
@@ -81,18 +81,25 @@ object d3hierarchy extends js.Object {
 
   }
 
+  @js.native
+  trait Packed extends js.Object {
+    def x: js.UndefOr[Double] = js.native
+    def y: js.UndefOr[Double] = js.native
+    def r: js.UndefOr[Double] = js.native
+  }
+
   /**
    * @see [[pack]]
    * @see [[https://github.com/d3/d3-hierarchy#pack]]
    */
   @js.native
-  trait Pack[N <: HierarchyNode[N] with PackNode] extends js.Function1[Hierarchy[N], Hierarchy[N]] {
+  trait Pack[Datum] extends js.Function1[Hierarchy[Datum], Hierarchy[Datum] with Packed] {
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
     def radius(): Double = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-    def radius(radius: js.Function1[N, js.UndefOr[Double]]): this.type = js.native
+    def radius(radius: js.Function1[Hierarchy[Datum], js.UndefOr[Double]]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
     //def radius(radius: Double): this.type = js.native
@@ -104,10 +111,10 @@ object d3hierarchy extends js.Object {
     def size(size: js.Array[Int]): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-    def padding(): js.Function1[N, Double] = js.native
+    def padding(): js.Function1[Hierarchy[Datum], Double] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-    def padding(padding: js.Function1[N, Double]): this.type = js.native
+    def padding(padding: js.Function1[Hierarchy[Datum], Double]): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
     def padding(padding: Double): this.type = js.native
@@ -116,53 +123,3 @@ object d3hierarchy extends js.Object {
 
 }
 
-@JSExportAll
-trait HierarchyNode[N <: HierarchyNode[N]] {
-
-  //def data: js.UndefOr[Datum]
-  //def data_=(newData:js.UndefOr[Datum] ): Unit
-
-  def depth: js.UndefOr[Int]
-  def depth_=(newDepth: js.UndefOr[Int]): Unit
-
-  def height: js.UndefOr[Int]
-  def height_=(newHeight: js.UndefOr[Int]): Unit
-
-  def parent: js.UndefOr[N]
-  def parent_=(newParent: js.UndefOr[N]): Unit
-
-  def children: js.UndefOr[js.Array[N]]
-  def children_=(newChildren: js.UndefOr[js.Array[N]]): Unit
-
-  //def value: ???
-  //def value_=(newValue: ???): Unit
-
-}
-
-trait HierarchyNodeImpl[N <: HierarchyNode[N]] extends HierarchyNode[N] {
-  //override var data = js.undefined
-  override var depth: js.UndefOr[Int] = js.undefined
-  override var height: js.UndefOr[Int] = js.undefined
-  override var parent: js.UndefOr[N] = js.undefined
-  override var children: js.UndefOr[js.Array[N]] = js.undefined
-}
-
-@JSExportAll
-trait PackNode {
-
-  def x: js.UndefOr[Double]
-  def x_=(newX: js.UndefOr[Double]): Unit
-
-  def y: js.UndefOr[Double]
-  def y_=(newY: js.UndefOr[Double]): Unit
-
-  def r: js.UndefOr[Double]
-  def r_=(newR: js.UndefOr[Double]): Unit
-
-}
-
-trait PackNodeImpl extends PackNode {
-  override var x: js.UndefOr[Double] = js.undefined
-  override var y: js.UndefOr[Double] = js.undefined
-  override var r: js.UndefOr[Double] = js.undefined
-}
