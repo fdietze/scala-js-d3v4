@@ -18,6 +18,7 @@ package d3v4 {
     @inline implicit def d3toD3Quadtree(d3t: d3.type): d3quadtree.type = d3quadtree
     @inline implicit def d3toD3Zoom(d3t: d3.type): d3zoom.type = d3zoom
     @inline implicit def d3toD3Transition(d3t: d3.type): d3transition.type = d3transition
+    @inline implicit def d3toD3Hierarchy(d3t: d3.type): d3hierarchy.type = d3hierarchy
 
     @js.native
     trait BaseEvent extends js.Object {
