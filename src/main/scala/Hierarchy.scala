@@ -19,6 +19,7 @@ object d3hierarchy extends js.Object {
   /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
   def pack[N <: HierarchyNode with PackNode](): Pack[N] = js.native
 
+  /** @see [[hierarchy]] */
   @js.native
   trait Hierarchy[N <: HierarchyNode] extends js.Object {
 
@@ -72,7 +73,10 @@ object d3hierarchy extends js.Object {
 
   }
 
-  /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
+  /**
+   * @see [[pack]]
+   * @see [[https://github.com/d3/d3-hierarchy#pack]]
+   */
   @js.native
   trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[N, N] {
 
