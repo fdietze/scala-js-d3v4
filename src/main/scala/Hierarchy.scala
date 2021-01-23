@@ -72,6 +72,36 @@ object d3hierarchy extends js.Object {
 
   }
 
+  /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
+  @js.native
+  trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[N, N] {
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+    def radius(): Double = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+    def radius(radius: js.Function1[N, Double]): this.type = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+    def radius(radius: Double): this.type = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
+    def size(): js.Array[Int] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
+    def size(size: js.Array[Int]): this.type = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
+    def padding(): js.Function1[N, Double] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
+    def padding(padding: js.Function1[N, Double]): this.type = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
+    def padding(padding: Double): this.type = js.native
+
+  }
+
 }
 
 @JSExportAll
@@ -81,7 +111,7 @@ trait HierarchyNode {
   //def data_=(newData:js.UndefOr[Datum] ): Unit
 
   def depth: js.UndefOr[Int]
-  def depth_=(newDepth: js.UndefOr[Int]): js.UndefOr[Int]
+  def depth_=(newDepth: js.UndefOr[Int]): Unit
 
   def height: js.UndefOr[Int]
   def height_=(newHeight: js.UndefOr[Int]): Unit
@@ -99,58 +129,31 @@ trait HierarchyNode {
 
 trait HierarchyNodeImpl extends HierarchyNode {
   //override var data = js.undefined
-  override var depth = js.undefined
-  override var height = js.undefined
-  override var parent = js.undefined
-  override var children = js.undefined
+  override var depth: js.UndefOr[Int] = js.undefined
+  override var height: js.UndefOr[Int] = js.undefined
+  override var parent: js.UndefOr[this.type] = js.undefined
+  override var children: js.UndefOr[js.Array[this.type]] = js.undefined
 }
 
 @JSExportAll
 trait PackNode {
 
   def x: js.UndefOr[Double]
+
   def x_=(newX: js.UndefOr[Double]): Unit
 
   def y: js.UndefOr[Double]
+
   def y_=(newY: js.UndefOr[Double]): Unit
 
   def r: js.UndefOr[Double]
+
   def r_=(newR: js.UndefOr[Double]): Unit
 
 }
 
 trait PackNodeImpl extends PackNode {
-  override var x = js.undefined
-  override var y = js.undefined
-  override var r = js.undefined
-}
-
-/** @see [[https://github.com/d3/d3-hierarchy#pack]] */
-@JSExportAll
-trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[N, N] {
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-  def radius(): Double = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-  def radius(radius: js.Function1[N, Double]): this.type = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-  def radius(radius: Double): this.type = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
-  def size(): js.Array[Int] = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
-  def size(size: js.Array[Int]): this.type = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-  def padding(): js.Function1[N, Double] = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-  def padding(padding: js.Function1[N, Double]): this.type = js.native
-
-  /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-  def padding(padding: Double): this.type = js.native
-
+  override var x: js.UndefOr[Double] = js.undefined
+  override var y: js.UndefOr[Double] = js.undefined
+  override var r: js.UndefOr[Double] = js.undefined
 }
