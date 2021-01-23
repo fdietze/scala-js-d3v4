@@ -16,7 +16,7 @@ object d3hierarchy extends js.Object {
   def hierarchy[N <: HierarchyNode](data: N): Hierarchy[N] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[N <: HierarchyNode](data: N, children: js.Function1[N, js.Array[N]]): Hierarchy[N] = js.native
+  def hierarchy[N <: HierarchyNode](data: N, children: js.Function1[N, js.UndefOr[js.Array[N]]]): Hierarchy[N] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
   def pack[N <: HierarchyNode with PackNode](): Pack[N] = js.native
