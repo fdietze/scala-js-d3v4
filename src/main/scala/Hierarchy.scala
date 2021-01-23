@@ -1,6 +1,5 @@
 import scala.scalajs.js
 import scala.scalajs.js.annotation.{JSExportAll, JSImport}
-import d3hierarchy.Hierarchy
 
 /**
  * @see [[https://github.com/d3/d3-hierarchy]]
@@ -12,102 +11,146 @@ import d3hierarchy.Hierarchy
 object d3hierarchy extends js.Object {
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[Datum](data: Datum): Hierarchy[Datum] = js.native
+  def hierarchy[N <: HierarchyNode](data: N): Hierarchy[N] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[Datum](data: Datum, children: js.Function1[Datum, js.Array[Datum]]): Hierarchy[Datum] = js.native
+  def hierarchy[N <: HierarchyNode](data: N, children: js.Function1[N, js.Array[N]]): Hierarchy[N] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
-  def pack[Datum](): Pack[Datum] = js.native
+  def pack[N <: HierarchyNode with PackNode](): Pack[N] = js.native
 
   @js.native
-  trait Hierarchy[Datum] extends js.Object {
-
-    def data: Datum = js.native
-    def depth: Int = js.native
-    def height: Int = js.native
-    def parent: Hierarchy[Datum] = js.native
-    def children: js.Array[Hierarchy[Datum]] = js.native
-    //def value: ??? = js.native
+  trait Hierarchy[N <: HierarchyNode] extends js.Object {
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_ancestors]] */
-    def ancestors(): js.Array[Hierarchy[Datum]] = js.native
+    def ancestors(): js.Array[N] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_descendants]] */
-    def descendants(): js.Array[Hierarchy[Datum]] = js.native
+    def descendants(): js.Array[N] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_leaves]] */
-    def leaves(): js.Array[Hierarchy[Datum]] = js.native
+    def leaves(): js.Array[N] = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_find]] */
-    //def find(filter: ???): js.UndefOr[Node[Datum]] = js.native
+    //def find(filter: ???): js.UndefOr[N] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_path]] */
-    def path(target: Hierarchy[Datum]): js.Array[Hierarchy[Datum]] = js.native
+    def path(target: N): js.Array[N] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_links]] */
-    def links(): js.Array[Hierarchy[Datum]] = js.native
+    def links(): js.Array[N] = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_sum]] */
-    //def sum(value: ???): js.Array[Node[Datum]] = js.native
+    //def sum(value: ???): js.Array[N] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_count]] */
     def count(): Int = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_sort]] */
-    def sort(compare: js.Function2[Hierarchy[Datum], Hierarchy[Datum], Int]): Hierarchy[Datum] = js.native
+    def sort(compare: js.Function2[N, N, Int]): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_each]] */
-    def each(function: js.Function1[Hierarchy[Datum], Unit]):Hierarchy[Datum] = js.native
+    def each(function: js.Function1[N, Unit]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_each]] */
-    //def each(function: js.Function1[Node[Datum], Unit], that: ???):Node[Datum] = js.native
+    //def each(function: js.Function1[N, Unit], that: ???): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_eachAfter]] */
-    def eachAfter(function: js.Function1[Hierarchy[Datum], Unit]):Hierarchy[Datum] = js.native
+    def eachAfter(function: js.Function1[N, Unit]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_eachAfter]] */
-    //def eachAfter(function: js.Function1[Node[Datum], Unit], that: ???):Node[Datum] = js.native
+    //def eachAfter(function: js.Function1[N, Unit], that: ???): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_eachBefore]] */
-    def eachBefore(function: js.Function1[Hierarchy[Datum], Unit]):Hierarchy[Datum] = js.native
+    def eachBefore(function: js.Function1[N, Unit]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_eachBefore]] */
-    //def eachBefore(function: js.Function1[Node[Datum], Unit], that: ???):Node[Datum] = js.native
+    //def eachBefore(function: js.Function1[N, Unit], that: ???): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_copy]] */
-    def copy(): Hierarchy[Datum] = js.native
+    def copy(): this.type = js.native
 
   }
 
 }
 
+@JSExportAll
+trait HierarchyNode {
+
+  //def data: js.UndefOr[Datum]
+  //def data_=(newData:js.UndefOr[Datum] ): Unit
+
+  def depth: js.UndefOr[Int]
+  def depth_=(newDepth: js.UndefOr[Int]): js.UndefOr[Int]
+
+  def height: js.UndefOr[Int]
+  def height_=(newHeight: js.UndefOr[Int]): Unit
+
+  def parent: js.UndefOr[this.type]
+  def parent_=(newParent: js.UndefOr[this.type]): Unit
+
+  def children: js.UndefOr[js.Array[this.type]]
+  def children_=(newChildren: js.UndefOr[js.Array[this.type]]): Unit
+
+  //def value: ???
+  //def value_=(newValue: ???): Unit
+
+}
+
+trait HierarchyNodeImpl extends HierarchyNode {
+  //override var data = js.undefined
+  override var depth = js.undefined
+  override var height = js.undefined
+  override var parent = js.undefined
+  override var children = js.undefined
+}
+
+@JSExportAll
+trait PackNode {
+
+  def x: js.UndefOr[Double]
+  def x_=(newX: js.UndefOr[Double]): Unit
+
+  def y: js.UndefOr[Double]
+  def y_=(newY: js.UndefOr[Double]): Unit
+
+  def r: js.UndefOr[Double]
+  def r_=(newR: js.UndefOr[Double]): Unit
+
+}
+
+trait PackNodeImpl extends PackNode {
+  override var x = js.undefined
+  override var y = js.undefined
+  override var r = js.undefined
+}
+
 /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
 @JSExportAll
-trait Pack[Datum] extends js.Function1[Hierarchy[Datum], Hierarchy[Datum]] {
+trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[N, N] {
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
   def radius(): Double = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-  def radius(radius: js.Function1[Hierarchy[Datum], Double]): Pack[Datum] = js.native
+  def radius(radius: js.Function1[N, Double]): this.type = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-  def radius(radius: Double): Pack[Datum] = js.native
+  def radius(radius: Double): this.type = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
   def size(): js.Array[Int] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
-  def size(size: js.Array[Int]): Pack[Datum] = js.native
+  def size(size: js.Array[Int]): this.type = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-  def padding(): js.Function1[Hierarchy[Datum], Double] = js.native
+  def padding(): js.Function1[N, Double] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-  def padding(padding: js.Function1[Hierarchy[Datum], Double]): Pack[Datum] = js.native
+  def padding(padding: js.Function1[N, Double]): this.type = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
-  def padding(padding:  Double): Pack[Datum] = js.native
+  def padding(padding: Double): this.type = js.native
 
 }

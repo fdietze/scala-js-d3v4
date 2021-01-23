@@ -1,5 +1,6 @@
 name := "scala-js-d3v4"
-version := "master-SNAPSHOT"
+version := "1.0.0-SNAPSHOT"
+organization := "com.github.fdietze.scala-js-d3v4"
 
 crossScalaVersions := Seq("2.12.12", "2.13.3")
 scalaVersion in ThisBuild := crossScalaVersions.value.last
