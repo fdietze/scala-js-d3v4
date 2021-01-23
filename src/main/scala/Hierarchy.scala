@@ -16,7 +16,7 @@ object d3hierarchy extends js.Object {
   def hierarchy[Datum](data: Datum): Hierarchy[Datum] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[Datum](data: Datum, children: js.Function1[Datum, js.UndefOr[js.Array[Datum]]]): Hierarchy[Datum] = js.native
+  def hierarchy[Datum](data: Datum, children: js.Function1[Datum, js.Array[Datum]]): Hierarchy[Datum] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
   def pack[Datum](): Pack[Datum] = js.native
