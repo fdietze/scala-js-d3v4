@@ -13,17 +13,17 @@ import scala.scalajs.js.annotation.{JSExportAll, JSImport}
 object d3hierarchy extends js.Object {
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[N <: HierarchyNode](data: N): Hierarchy[N] = js.native
+  def hierarchy[N <: HierarchyNode[N]](data: N): Hierarchy[N] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[N <: HierarchyNode](data: N, children: js.Function1[N, js.UndefOr[js.Array[N]]]): Hierarchy[N] = js.native
+  def hierarchy[N <: HierarchyNode[N]](data: N, children: js.Function1[N, js.UndefOr[js.Array[N]]]): Hierarchy[N] = js.native
 
   /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
-  def pack[N <: HierarchyNode with PackNode](): Pack[N] = js.native
+  def pack[N <: HierarchyNode[N] with PackNode](): Pack[N] = js.native
 
   /** @see [[hierarchy]] */
   @js.native
-  trait Hierarchy[N <: HierarchyNode] extends js.Object {
+  trait Hierarchy[N <: HierarchyNode[N]] extends js.Object {
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_ancestors]] */
     def ancestors(): js.Array[N] = js.native
@@ -80,7 +80,7 @@ object d3hierarchy extends js.Object {
    * @see [[https://github.com/d3/d3-hierarchy#pack]]
    */
   @js.native
-  trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[Hierarchy[N], Hierarchy[N]] {
+  trait Pack[N <: HierarchyNode[N] with PackNode] extends js.Function1[Hierarchy[N], Hierarchy[N]] {
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
     def radius(): Double = js.native
@@ -111,7 +111,7 @@ object d3hierarchy extends js.Object {
 }
 
 @JSExportAll
-trait HierarchyNode {
+trait HierarchyNode[N <: HierarchyNode[N]] {
 
   //def data: js.UndefOr[Datum]
   //def data_=(newData:js.UndefOr[Datum] ): Unit
@@ -122,23 +122,23 @@ trait HierarchyNode {
   def height: js.UndefOr[Int]
   def height_=(newHeight: js.UndefOr[Int]): Unit
 
-  def parent: js.UndefOr[this.type]
-  def parent_=(newParent: js.UndefOr[this.type]): Unit
+  def parent: js.UndefOr[N]
+  def parent_=(newParent: js.UndefOr[N]): Unit
 
-  def children: js.UndefOr[js.Array[this.type]]
-  def children_=(newChildren: js.UndefOr[js.Array[this.type]]): Unit
+  def children: js.UndefOr[js.Array[N]]
+  def children_=(newChildren: js.UndefOr[js.Array[N]]): Unit
 
   //def value: ???
   //def value_=(newValue: ???): Unit
 
 }
 
-trait HierarchyNodeImpl extends HierarchyNode {
+trait HierarchyNodeImpl[N <: HierarchyNode[N]] extends HierarchyNode[N] {
   //override var data = js.undefined
   override var depth: js.UndefOr[Int] = js.undefined
   override var height: js.UndefOr[Int] = js.undefined
-  override var parent: js.UndefOr[this.type] = js.undefined
-  override var children: js.UndefOr[js.Array[this.type]] = js.undefined
+  override var parent: js.UndefOr[N] = js.undefined
+  override var children: js.UndefOr[js.Array[N]] = js.undefined
 }
 
 @JSExportAll
