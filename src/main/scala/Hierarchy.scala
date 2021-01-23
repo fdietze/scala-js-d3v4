@@ -80,7 +80,7 @@ object d3hierarchy extends js.Object {
    * @see [[https://github.com/d3/d3-hierarchy#pack]]
    */
   @js.native
-  trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[N, N] {
+  trait Pack[N <: HierarchyNode with PackNode] extends js.Function1[Hierarchy[N], Hierarchy[N]] {
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
     def radius(): Double = js.native
