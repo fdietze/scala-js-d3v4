@@ -25,50 +25,56 @@ object d3hierarchy extends js.Object {
   @js.native
   trait Hierarchy[N <: HierarchyNode[N]] extends js.Object {
 
+    def data: N = js.native
+    def depth: js.UndefOr[Int] = js.native
+    def height: js.UndefOr[Int] = js.native
+    def parent: js.UndefOr[this.type] = js.native
+    def children: js.UndefOr[js.Array[this.type]] = js.native
+
     /** @see [[https://github.com/d3/d3-hierarchy#node_ancestors]] */
-    def ancestors(): js.Array[N] = js.native
+    def ancestors(): js.Array[this.type] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_descendants]] */
-    def descendants(): js.Array[N] = js.native
+    def descendants(): js.Array[this.type] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_leaves]] */
-    def leaves(): js.Array[N] = js.native
+    def leaves(): js.Array[this.type] = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_find]] */
-    //def find(filter: ???): js.UndefOr[N] = js.native
+    //def find(filter: ???): ??? = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_path]] */
-    def path(target: N): js.Array[N] = js.native
+    def path(target: N): js.Array[this.type] = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_links]] */
-    def links(): js.Array[N] = js.native
+    def links(): js.Array[this.type] = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_sum]] */
-    //def sum(value: ???): js.Array[N] = js.native
+    //def sum(value: ???): ??? = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_count]] */
     def count(): Int = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_sort]] */
-    def sort(compare: js.Function2[N, N, Int]): this.type = js.native
+    def sort(compare: js.Function2[this.type, this.type, Int]): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_each]] */
-    def each(function: js.Function1[N, Unit]): this.type = js.native
+    def each(function: js.Function1[this.type, Unit]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_each]] */
-    //def each(function: js.Function1[N, Unit], that: ???): this.type = js.native
+    //def each(function: js.Function1[this.type, Unit], that: ???): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_eachAfter]] */
-    def eachAfter(function: js.Function1[N, Unit]): this.type = js.native
+    def eachAfter(function: js.Function1[this.type, Unit]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_eachAfter]] */
-    //def eachAfter(function: js.Function1[N, Unit], that: ???): this.type = js.native
+    //def eachAfter(function: js.Function1[this.type, Unit], that: ???): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_eachBefore]] */
-    def eachBefore(function: js.Function1[N, Unit]): this.type = js.native
+    def eachBefore(function: js.Function1[this.type, Unit]): this.type = js.native
 
     ///** @see [[https://github.com/d3/d3-hierarchy#node_eachBefore]] */
-    //def eachBefore(function: js.Function1[N, Unit], that: ???): this.type = js.native
+    //def eachBefore(function: js.Function1[this.type, Unit], that: ???): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#node_copy]] */
     def copy(): this.type = js.native
