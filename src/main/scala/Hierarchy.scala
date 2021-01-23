@@ -16,6 +16,9 @@ object d3hierarchy extends js.Object {
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
   def hierarchy[Datum](data: Datum, children: js.Function1[Datum, js.Array[Datum]]): Node[Datum] = js.native
 
+  /** @see [[https://github.com/d3/d3-hierarchy#pack]] */
+  def pack[Datum](): Pack[Datum] = js.native
+
   @js.native
   trait Node[Datum] extends js.Object {
 
@@ -75,5 +78,37 @@ object d3hierarchy extends js.Object {
     def copy(): Node[Datum] = js.native
 
   }
+
+}
+
+import d3hierarchy.Node
+
+/** @see [[https://github.com/d3/d3-hierarchy#pack]] */
+@JSExportAll
+trait Pack[Datum] extends js.Function1[Node[Datum], Node[Datum]] {
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+  def radius(): Double = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+  def radius(radius: js.Function1[Node[Datum], Double]): Pack[Datum] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+  def radius(radius: Double): Pack[Datum] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
+  def size(): js.Array[Int] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
+  def size(size: js.Array[Int]): Pack[Datum] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
+  def padding(): js.Function1[Node[Datum], Double] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
+  def padding(padding: js.Function1[Node[Datum], Double]): Pack[Datum] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#pack_padding]] */
+  def padding(padding:  Double): Pack[Datum] = js.native
 
 }
