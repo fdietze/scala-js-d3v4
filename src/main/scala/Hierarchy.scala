@@ -82,7 +82,7 @@ object d3hierarchy extends js.Object {
   }
 
   @js.native
-  trait Packed extends js.Object {
+  trait Packed extends js.Object { self: Hierarchy[_] =>
     def x: js.UndefOr[Double] = js.native
     def y: js.UndefOr[Double] = js.native
     def r: js.UndefOr[Double] = js.native
