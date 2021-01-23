@@ -145,15 +145,12 @@ trait HierarchyNodeImpl extends HierarchyNode {
 trait PackNode {
 
   def x: js.UndefOr[Double]
-
   def x_=(newX: js.UndefOr[Double]): Unit
 
   def y: js.UndefOr[Double]
-
   def y_=(newY: js.UndefOr[Double]): Unit
 
   def r: js.UndefOr[Double]
-
   def r_=(newR: js.UndefOr[Double]): Unit
 
 }
