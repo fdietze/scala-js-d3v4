@@ -11,7 +11,10 @@ import scala.scalajs.js.annotation._
 object d3hierarchy extends js.Object {
 
   /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
-  def hierarchy[Datum](data:Datum): Node[Datum] = js.native
+  def hierarchy[Datum](data: Datum): Node[Datum] = js.native
+
+  /** @see [[https://github.com/d3/d3-hierarchy#hierarchy]] */
+  def hierarchy[Datum](data: Datum, children: js.Function1[Datum, js.Array[Datum]]): Node[Datum] = js.native
 
   @js.native
   trait Node[Datum] extends js.Object {
@@ -22,5 +25,3 @@ object d3hierarchy extends js.Object {
   }
 
 }
-
-
