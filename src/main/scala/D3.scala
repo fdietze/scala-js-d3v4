@@ -40,6 +40,7 @@ package d3v4 {
     type Quadtree[Datum] = d3quadtree.Quadtree[Datum]
     type QuadtreeNode[Datum] = d3quadtree.QuadtreeNode[Datum]
     type Transition[Datum] = d3transition.Transition[Datum]
+    type Hierarchy[N <: HierarchyNode] = d3hierarchy.Hierarchy[N]
   }
 }
 
