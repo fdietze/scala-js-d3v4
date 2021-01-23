@@ -18,10 +18,62 @@ object d3hierarchy extends js.Object {
 
   @js.native
   trait Node[Datum] extends js.Object {
+
     def data: Datum = js.native
     def depth: Int = js.native
     def height: Int = js.native
     def parent: Node[Datum] = js.native
+    def children: js.Array[Datum] = js.native
+    //def value: ??? = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_ancestors]] */
+    def ancestors(): js.Array[Node[Datum]] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_descendants]] */
+    def descendants(): js.Array[Node[Datum]] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_leaves]] */
+    def leaves(): js.Array[Node[Datum]] = js.native
+
+    ///** @see [[https://github.com/d3/d3-hierarchy#node_find]] */
+    //def find(filter: ???): js.UndefOr[Node[Datum]] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_path]] */
+    def path(target: Node[Datum]): js.Array[Node[Datum]] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_links]] */
+    def links(): js.Array[Node[Datum]] = js.native
+
+    ///** @see [[https://github.com/d3/d3-hierarchy#node_sum]] */
+    //def sum(value: ???): js.Array[Node[Datum]] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_count]] */
+    def count(): Int = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_sort]] */
+    def sort(compare: js.Function2[Node[Datum], Node[Datum], Int]): Node[Datum] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_each]] */
+    def each(function: js.Function1[Node[Datum], Unit]):Node[Datum] = js.native
+
+    ///** @see [[https://github.com/d3/d3-hierarchy#node_each]] */
+    //def each(function: js.Function1[Node[Datum], Unit], that: ???):Node[Datum] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_eachAfter]] */
+    def eachAfter(function: js.Function1[Node[Datum], Unit]):Node[Datum] = js.native
+
+    ///** @see [[https://github.com/d3/d3-hierarchy#node_eachAfter]] */
+    //def eachAfter(function: js.Function1[Node[Datum], Unit], that: ???):Node[Datum] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_eachBefore]] */
+    def eachBefore(function: js.Function1[Node[Datum], Unit]):Node[Datum] = js.native
+
+    ///** @see [[https://github.com/d3/d3-hierarchy#node_eachBefore]] */
+    //def eachBefore(function: js.Function1[Node[Datum], Unit], that: ???):Node[Datum] = js.native
+
+    /** @see [[https://github.com/d3/d3-hierarchy#node_copy]] */
+    def copy(): Node[Datum] = js.native
+
   }
 
 }
