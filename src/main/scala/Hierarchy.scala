@@ -86,10 +86,10 @@ object d3hierarchy extends js.Object {
     def radius(): Double = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-    def radius(radius: js.Function1[N, Double]): this.type = js.native
+    def radius(radius: js.Function1[N, js.UndefOr[Double]]): this.type = js.native
 
-    /** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
-    def radius(radius: Double): this.type = js.native
+    ///** @see [[https://github.com/d3/d3-hierarchy#pack_radius]] */
+    //def radius(radius: Double): this.type = js.native
 
     /** @see [[https://github.com/d3/d3-hierarchy#pack_size]] */
     def size(): js.Array[Int] = js.native
