@@ -2,7 +2,7 @@ name := "scala-js-d3v4"
 version in ThisBuild := "master-SNAPSHOT"
 organization in ThisBuild := "com.github.fdietze.scala-js-d3v4"
 
-crossScalaVersions in ThisBuild := Seq("2.12.12", "2.13.3")
+crossScalaVersions in ThisBuild := Seq("2.12.12", "2.13.7")
 scalaVersion in ThisBuild := crossScalaVersions.value.last
 
 lazy val root = project
@@ -11,7 +11,7 @@ lazy val root = project
   .settings(
     name := "scala-js-d3v4",
     libraryDependencies ++= (
-      "org.scala-js" %%% "scalajs-dom" % "1.1.0" ::
+      "org.scala-js" %%% "scalajs-dom" % "2.0.0" ::
         Nil
     ),
     npmDependencies in Compile ++= (
