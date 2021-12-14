@@ -30,7 +30,7 @@ object d3transition extends js.Object {
     def duration(value: Double): Transition[Datum] = js.native
 
     /** @see [[https://github.com/d3/d3-transition#transition_empty]] */
-    def empty():Boolean = js.native
+    def empty(): Boolean = js.native
 
     /** @see [[https://github.com/d3/d3-transition#transition_nodes]] */
     def nodes(): js.Array[dom.EventTarget] = js.native
