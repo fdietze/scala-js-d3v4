@@ -34,7 +34,7 @@ object d3color extends js.Object {
 
   @js.native
   trait Color extends js.Object {
-    var opacity: Double           = js.native
-    override def toString: String = js.native
+    var opacity: Double             = js.native
+    override def toString(): String = js.native
   }
 }

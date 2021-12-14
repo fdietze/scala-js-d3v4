@@ -26,21 +26,21 @@ package d3v4 {
       var sourceEvent: dom.Event = js.native
     }
 
-    type DragEvent                                = d3drag.DragEvent
-    type ZoomEvent                                = d3zoom.ZoomEvent
-    type ZoomBehavior[Datum]                      = d3zoom.ZoomBehavior[Datum]
-    type Transform                                = d3zoom.Transform
-    type Selection[Datum]                         = d3selection.Selection[Datum]
-    type Interval                                 = d3time.Interval
-    type Scale                                    = d3scale.Scale
-    type ContinuousScale[S <: ContinuousScale[S]] = d3scale.ContinuousScale[S]
-    type TimeScale                                = d3scale.TimeScale
-    type Force[N <: SimulationNode]               = d3force.Force[N]
-    type Simulation[N <: SimulationNode]          = d3force.Simulation[N]
-    type Quadtree[Datum]                          = d3quadtree.Quadtree[Datum]
-    type QuadtreeNode[Datum]                      = d3quadtree.QuadtreeNode[Datum]
-    type Transition[Datum]                        = d3transition.Transition[Datum]
-    type Hierarchy[Datum]                         = d3hierarchy.Hierarchy[Datum]
+    type DragEvent                                        = d3drag.DragEvent
+    type ZoomEvent                                        = d3zoom.ZoomEvent
+    type ZoomBehavior[Datum]                              = d3zoom.ZoomBehavior[Datum]
+    type Transform                                        = d3zoom.Transform
+    type Selection[Datum]                                 = d3selection.Selection[Datum]
+    type Interval                                         = d3time.Interval
+    type Scale                                            = d3scale.Scale
+    type ContinuousScale[S <: d3scale.ContinuousScale[S]] = d3scale.ContinuousScale[S]
+    type TimeScale                                        = d3scale.TimeScale
+    type Force[N <: SimulationNode]                       = d3force.Force[N]
+    type Simulation[N <: SimulationNode]                  = d3force.Simulation[N]
+    type Quadtree[Datum]                                  = d3quadtree.Quadtree[Datum]
+    type QuadtreeNode[Datum]                              = d3quadtree.QuadtreeNode[Datum]
+    type Transition[Datum]                                = d3transition.Transition[Datum]
+    type Hierarchy[Datum]                                 = d3hierarchy.Hierarchy[Datum]
   }
 }
 

@@ -2,16 +2,16 @@ name         := "scala-js-d3v4"
 version      := "master-SNAPSHOT"
 organization := "com.github.fdietze.scala-js-d3v4"
 
-crossScalaVersions        := Seq("2.12.12", "2.13.6", "3.1.0")
-scalaVersion in ThisBuild := crossScalaVersions.value.last
+crossScalaVersions := Seq("2.12.15", "2.13.7", "3.1.0")
+scalaVersion       := crossScalaVersions.value.last
 scalacOptions --= Seq("-Xfatal-warnings") // overwrite sbt-tpolecat setting
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "1.1.0",
+  "org.scala-js" %%% "scalajs-dom" % "2.0.0",
 )
-npmDependencies in Compile ++= Seq(
+Compile / npmDependencies ++= Seq(
   "d3" -> "5.9.2", // https://github.com/d3/d3/releases
 )
 

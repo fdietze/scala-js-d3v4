@@ -15,10 +15,10 @@ object d3zoom extends js.Object {
 
   @js.native
   trait Transform extends js.Object {
-    def x: Double                 = js.native
-    def y: Double                 = js.native
-    def k: Double                 = js.native
-    override def toString: String = js.native
+    def x: Double                   = js.native
+    def y: Double                   = js.native
+    def k: Double                   = js.native
+    override def toString(): String = js.native
 
     def scale(k: Double | js.UndefOr[Double]): Transform
     def translate(x: Double | js.UndefOr[Double], y: Double | js.UndefOr[Double]): Transform
