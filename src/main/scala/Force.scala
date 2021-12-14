@@ -48,8 +48,8 @@ object d3force extends js.Object {
     def on(typenames: String): this.type = js.native
   }
   trait Force[N <: SimulationNode] extends js.Object {
-    def force(alpha: Double)
-    def initialize(nodes: js.Array[N])
+    def force(alpha: Double): Unit 
+    def initialize(nodes: js.Array[N]): Unit 
   }
 
   @js.native
@@ -110,19 +110,19 @@ object d3force extends js.Object {
 @JSExportAll
 trait SimulationNode {
   def index: js.UndefOr[Int]
-  def index_=(newIndex: js.UndefOr[Int])
+  def index_=(newIndex: js.UndefOr[Int]): Unit 
   def x: js.UndefOr[Double]
-  def x_=(newX: js.UndefOr[Double])
+  def x_=(newX: js.UndefOr[Double]): Unit 
   def y: js.UndefOr[Double]
-  def y_=(newY: js.UndefOr[Double])
+  def y_=(newY: js.UndefOr[Double]): Unit 
   def vx: js.UndefOr[Double]
-  def vx_=(newVX: js.UndefOr[Double])
+  def vx_=(newVX: js.UndefOr[Double]): Unit 
   def vy: js.UndefOr[Double]
-  def vy_=(newVX: js.UndefOr[Double])
+  def vy_=(newVX: js.UndefOr[Double]): Unit 
   def fx: js.UndefOr[Double]
-  def fx_=(newFX: js.UndefOr[Double])
+  def fx_=(newFX: js.UndefOr[Double]): Unit 
   def fy: js.UndefOr[Double]
-  def fy_=(newFX: js.UndefOr[Double])
+  def fy_=(newFX: js.UndefOr[Double]): Unit 
 }
 trait SimulationNodeImpl extends SimulationNode {
   var index: js.UndefOr[Int] = js.undefined
@@ -138,7 +138,7 @@ trait SimulationNodeImpl extends SimulationNode {
 @JSExportAll
 trait SimulationLink[S <: SimulationNode, T <: SimulationNode] {
   def index: js.UndefOr[Int]
-  def index_=(newIndex: js.UndefOr[Int])
+  def index_=(newIndex: js.UndefOr[Int]): Unit 
 
   def source: S
   def target: T
