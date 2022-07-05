@@ -18,10 +18,10 @@ object d3color extends js.Object {
   def hcl(specifier: String): Hcl                                = js.native
   def hcl(color: Color): Hcl                                     = js.native
 
-  def rgb(r: Int, g: Int, b: Int): Rgb                           = js.native
-  def rgb(r: Int, g: Int, b: Int, opacity: Int): Rgb             = js.native
-  def rgb(specifier: String): Rgb                                = js.native
-  def rgb(color: Color): Rgb                                     = js.native
+  def rgb(r: Int, g: Int, b: Int): Rgb               = js.native
+  def rgb(r: Int, g: Int, b: Int, opacity: Int): Rgb = js.native
+  def rgb(specifier: String): Rgb                    = js.native
+  def rgb(color: Color): Rgb                         = js.native
 
   @js.native
   trait Rgb extends Color {
