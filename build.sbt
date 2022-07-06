@@ -2,7 +2,7 @@ name         := "scala-js-d3v4"
 version      := "master-SNAPSHOT"
 organization := "com.github.fdietze.scala-js-d3v4"
 
-crossScalaVersions := Seq("2.12.16", "2.13.8", "3.1.0")
+crossScalaVersions := Seq("2.12.16", "2.13.8", "3.1.3")
 scalaVersion       := crossScalaVersions.value.last
 scalacOptions --= Seq("-Xfatal-warnings") // overwrite sbt-tpolecat setting
 
