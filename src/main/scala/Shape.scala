@@ -16,8 +16,13 @@ object d3shape extends js.Object {
   def curveBasisClosed: CurveFactory                = js.native
   def curveCardinalClosed: CurveFactory             = js.native
   def curveCatmullRomClosed: CurveCatmullRomFactory = js.native
+  def curveBasis: CurveFactory                      = js.native
+  def curveCardinal: CurveFactory                   = js.native
+  def curveCatmullRom: CurveCatmullRomFactory       = js.native
   def curveLinear: CurveFactory                     = js.native
   def curveLinearClosed: CurveFactory               = js.native
+  def curveBundle: CurveBundleFactory               = js.native
+  def curveBundleClosed: CurveBundleFactory         = js.native
 
   @js.native
   trait BaseGenerator[G <: BaseGenerator[G]] extends js.Object {
@@ -41,6 +46,11 @@ object d3shape extends js.Object {
   @js.native
   trait CurveCatmullRomFactory extends CurveFactory {
     def alpha(alpha: Double): CurveCatmullRomFactory = js.native
+  }
+
+  @js.native
+  trait CurveBundleFactory extends CurveFactory {
+    def beta(beta: Double): CurveBundleFactory = js.native
   }
 
   @js.native
