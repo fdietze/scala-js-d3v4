@@ -9,7 +9,7 @@ scalacOptions --= Seq("-Xfatal-warnings") // overwrite sbt-tpolecat setting
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "2.2.0",
+  "org.scala-js" %%% "scalajs-dom" % "2.3.0",
 )
 Compile / npmDependencies ++= Seq(
   "d3" -> "5.9.2", // https://github.com/d3/d3/releases
