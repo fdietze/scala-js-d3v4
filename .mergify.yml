@@ -16,7 +16,7 @@ pull_request_rules:
 
   - name: Merge dependency-update PRs
     conditions:
-      - base=main
+      - base=master
       - label=dependencies
       - check-success~=build \(2\.12\.\d+\)
       - check-success~=build \(2\.13\.\d+\)
@@ -30,7 +30,7 @@ pull_request_rules:
   - name: Merge PRs (rebase) which are ready to merge
     conditions:
       - label=ready-to-merge-rebase
-      - base=main
+      - base=master
       - check-success~=build \(2\.12\.\d+\)
       - check-success~=build \(2\.13\.\d+\)
       - check-success~=build \(3\.\d+\.\d+\)
@@ -45,7 +45,7 @@ pull_request_rules:
   - name: Merge PRs (squash) which are ready to merge
     conditions:
       - label=ready-to-merge-squash
-      - base=main
+      - base=master
       - check-success~=build \(2\.12\.\d+\)
       - check-success~=build \(2\.13\.\d+\)
       - check-success~=build \(3\.\d+\.\d+\)
