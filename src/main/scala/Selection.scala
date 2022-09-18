@@ -32,6 +32,7 @@ object d3selection extends js.Object {
     def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction1[R]): Update[NewDatum] = js.native
     def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction2[R]): Update[NewDatum] = js.native
     def data[NewDatum <: Datum, R](data: js.Array[NewDatum], key: ValueFunction3[R]): Update[NewDatum] = js.native
+    def data[NewDatum <: Datum, R](key: ValueFunction1[R]): Update[NewDatum]                           = js.native
 
     def each[C <: CurrentDom](function: ListenerThisFunction0[C]): Unit = js.native
     def each[C <: CurrentDom](function: ListenerThisFunction1[C]): Unit = js.native
@@ -107,6 +108,7 @@ object d3selection extends js.Object {
     def select[SelData](selector: String): Selection[SelData]    = js.native
     def selectAll[SelData](selector: String): Selection[SelData] = js.native
     def node(): dom.EventTarget                                  = js.native
+    def merge(other: Update[Datum]): Selection[Datum]            = js.native
 
     /** @see [[d3transition]] */
     def transition(): Transition[Datum] = js.native
