@@ -1,3 +1,5 @@
+package d3v4
+
 import org.scalajs.dom
 
 import scala.scalajs.js
