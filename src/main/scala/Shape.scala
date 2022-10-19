@@ -37,7 +37,7 @@ object d3shape extends js.Object {
 
   @js.native
   trait LineGenerator extends BaseLineGenerator[LineGenerator] {
-    def apply(data: js.Array[js.Tuple2[Double, Double]]): String = js.native
+    def apply(data: js.Array[js.Tuple2[Double, Double]]): js.UndefOr[String] = js.native
   }
 
   @js.native
