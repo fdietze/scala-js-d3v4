@@ -7,8 +7,8 @@ scalaVersion       := crossScalaVersions.value.last
 
 val isScala3 = Def.setting(CrossVersion.partialVersion(scalaVersion.value).exists(_._1 == 3))
 
-scalacOptions --= Seq("-Xfatal-warnings") // overwrite sbt-tpolecat setting
-scalacOptions ++= (if (isScala3.value) Seq("-scalajs") else Nil)       // needed for Scala3 + ScalaJS
+scalacOptions --= Seq("-Xfatal-warnings")                        // overwrite sbt-tpolecat setting
+scalacOptions ++= (if (isScala3.value) Seq("-scalajs") else Nil) // needed for Scala3 + ScalaJS
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
