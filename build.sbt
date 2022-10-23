@@ -2,13 +2,13 @@ name         := "scala-js-d3v4"
 version      := "master-SNAPSHOT"
 organization := "com.github.fdietze.scala-js-d3v4"
 
-crossScalaVersions := Seq("2.12.16", "2.13.8", "3.1.3")
+crossScalaVersions := Seq("2.12.16", "2.13.10", "3.1.3")
 scalaVersion       := crossScalaVersions.value.last
 
 val isScala3 = Def.setting(CrossVersion.partialVersion(scalaVersion.value).exists(_._1 == 3))
 
-scalacOptions --= Seq("-Xfatal-warnings") // overwrite sbt-tpolecat setting
-scalacOptions ++= (if (isScala3.value) Seq("-scalajs") else Nil)       // needed for Scala3 + ScalaJS
+scalacOptions --= Seq("-Xfatal-warnings")                        // overwrite sbt-tpolecat setting
+scalacOptions ++= (if (isScala3.value) Seq("-scalajs") else Nil) // needed for Scala3 + ScalaJS
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
