@@ -2,7 +2,7 @@ addSbtPlugin("org.scala-js"                      % "sbt-scalajs"         % "1.11
 addSbtPlugin("ch.epfl.scala"                     % "sbt-scalajs-bundler" % "0.21.0")
 addSbtPlugin("com.thoughtworks.sbt-scala-js-map" % "sbt-scala-js-map"    % "4.1.1")
 
-addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.13")
+addSbtPlugin("org.xerial.sbt" % "sbt-sonatype" % "3.9.14")
 addSbtPlugin("com.github.sbt" % "sbt-pgp"      % "2.2.0")
 
 addSbtPlugin("io.github.davidgregory084" % "sbt-tpolecat" % "0.4.1")
