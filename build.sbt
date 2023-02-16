@@ -13,7 +13,7 @@ scalacOptions ++= (if (isScala3.value) Seq("-scalajs") else Nil) // needed for S
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "2.3.0",
+  "org.scala-js" %%% "scalajs-dom" % "2.4.0",
 )
 Compile / npmDependencies ++= Seq(
   "d3" -> "5.9.2", // https://github.com/d3/d3/releases
