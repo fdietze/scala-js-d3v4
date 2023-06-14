@@ -2,7 +2,7 @@ name         := "scala-js-d3v4"
 version      := "master-SNAPSHOT"
 organization := "com.github.fdietze.scala-js-d3v4"
 
-crossScalaVersions := Seq("2.12.18", "2.13.10", "3.3.0")
+crossScalaVersions := Seq("2.12.17", "2.13.10", "3.3.0")
 scalaVersion       := crossScalaVersions.value.last
 
 val isScala3 = Def.setting(CrossVersion.partialVersion(scalaVersion.value).exists(_._1 == 3))
