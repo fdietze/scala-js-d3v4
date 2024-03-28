@@ -9,7 +9,7 @@ jobs:
   build:
     strategy:
       matrix:
-        scalaVersion: ["2.12.19", "2.13.13", "3.3.3"]
+        scalaVersion: ["2.12.19", "2.13.13", "3.4.1"]
     runs-on: ubuntu-20.04
 
     steps:
