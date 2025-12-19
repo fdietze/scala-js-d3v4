@@ -2,18 +2,18 @@ name         := "scala-js-d3v4"
 version      := "master-SNAPSHOT"
 organization := "com.github.fdietze.scala-js-d3v4"
 
-crossScalaVersions := Seq("2.12.20", "2.13.18", "3.6.4")
+crossScalaVersions := Seq("2.12.21", "2.13.18", "3.6.4")
 scalaVersion       := crossScalaVersions.value.last
 
 val isScala3 = Def.setting(CrossVersion.partialVersion(scalaVersion.value).exists(_._1 == 3))
 
-scalacOptions --= Seq("-Xfatal-warnings")                        // overwrite sbt-tpolecat setting
+scalacOptions --= Seq("-Xfatal-warnings") // overwrite sbt-tpolecat setting
 scalacOptions ++= (if (isScala3.value) Seq("-scalajs") else Nil) // needed for Scala3 + ScalaJS
 
 enablePlugins(ScalaJSPlugin, ScalaJSBundlerPlugin)
 
 libraryDependencies ++= Seq(
-  "org.scala-js" %%% "scalajs-dom" % "2.8.0",
+  "org.scala-js" %%% "scalajs-dom" % "2.8.1",
 )
 Compile / npmDependencies ++= Seq(
   "d3" -> "5.9.2", // https://github.com/d3/d3/releases

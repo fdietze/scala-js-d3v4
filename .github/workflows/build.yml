@@ -10,14 +10,12 @@ jobs:
     strategy:
       matrix:
         scalaVersion: ["2.12.20", "2.13.18", "3.6.4"]
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
 
     steps:
-      - uses: actions/checkout@v2
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - uses: coursier/cache-action@v6
-      - uses: olafurpg/setup-scala@v12
+      - uses: actions/checkout@v5
+      - uses: coursier/cache-action@v7
+      - uses: olafurpg/setup-scala@v14
 
       - name: Test
         run: sbt "++${{matrix.scalaVersion}} test"
