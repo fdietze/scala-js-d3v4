@@ -17,7 +17,7 @@ object d3force extends js.Object {
   def forceCollide[N <: SimulationNode](radius: Double = 1): Collision[N]                     = js.native
   def forceLink[N <: SimulationNode, L <: SimulationLink[_ <: N, _ <: N]](
       links: js.Array[L] = js.Array[L](),
-  ): Link[N, L] = js.native
+  ): Link[N, L]                                                                               = js.native
 
   @js.native
   trait Simulation[N <: SimulationNode] extends js.Object {
