@@ -15,7 +15,7 @@ object d3quadtree extends js.Object {
       data: js.Array[Datum],
       x: js.Function1[Datum, Double],
       y: js.Function1[Datum, Double],
-  ): Quadtree[Datum] = js.native
+  ): Quadtree[Datum]                                          = js.native
 
   @js.native
   trait Quadtree[Datum] extends js.Object {
